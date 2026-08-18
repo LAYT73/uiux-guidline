@@ -1,0 +1,41 @@
+.root {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--bg-muted);
+  min-height: 36px;
+}
+
+.item {
+  min-height: 30px;
+  min-width: 44px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.md .item {
+  min-height: 34px;
+  min-width: 0;
+  padding: 0 14px;
+  font-size: var(--text-sm);
+}
+
+.active {
+  background: var(--bg-elevated);
+  color: var(--text);
+  box-shadow: var(--shadow-rest), 0 0 0 1px var(--border);
+}

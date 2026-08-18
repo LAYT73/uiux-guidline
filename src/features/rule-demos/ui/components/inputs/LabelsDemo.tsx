@@ -1,16 +1,18 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DemoStack } from '@/shared/ui/demo-kit'
 import { Input } from '@/shared/ui/input'
 import styles from '../../playground.module.css'
 
 export function LabelsGood() {
+  const { t } = useTranslation()
   const [value, setValue] = useState('')
   return (
     <DemoStack>
       <Input
-        label="Email"
+        label={t('demo.email')}
         name="labels-good"
-        hint="We send the receipt here."
+        hint={t('demo.emailHint')}
         value={value}
         onChange={(event) => setValue(event.target.value)}
       />
@@ -19,16 +21,17 @@ export function LabelsGood() {
 }
 
 export function LabelsBad() {
+  const { t } = useTranslation()
   const [value, setValue] = useState('')
   return (
     <DemoStack>
       <input
         className={styles.input}
-        placeholder="Email"
+        placeholder={t('demo.email')}
         value={value}
         onChange={(event) => setValue(event.target.value)}
       />
-      <p className={styles.meta}>{value ? 'The name vanished.' : 'The name lives only in the placeholder.'}</p>
+      <p className={styles.meta}>{value ? t('demo.nameVanished') : t('demo.nameInPlaceholder')}</p>
     </DemoStack>
   )
 }

@@ -1,15 +1,22 @@
 import { useTranslation } from 'react-i18next'
-import { IconButton } from '@/shared/ui/icon-button'
+import { SegmentedControl } from '@/shared/ui/segmented-control'
 import { useLocaleStore } from '../model/locale-store'
 
 export function LocaleToggle() {
   const { t } = useTranslation()
   const locale = useLocaleStore((state) => state.locale)
-  const toggleLocale = useLocaleStore((state) => state.toggleLocale)
+  const setLocale = useLocaleStore((state) => state.setLocale)
 
   return (
-    <IconButton label={t('a11y.toggleLocale')} onClick={toggleLocale}>
-      {locale === 'en' ? 'RU' : 'EN'}
-    </IconButton>
+    <SegmentedControl
+      size="sm"
+      ariaLabel={t('a11y.toggleLocale')}
+      value={locale}
+      options={[
+        { value: 'en', label: 'EN' },
+        { value: 'ru', label: 'RU' },
+      ]}
+      onChange={setLocale}
+    />
   )
 }

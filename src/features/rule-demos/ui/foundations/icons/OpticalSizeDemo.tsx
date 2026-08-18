@@ -1,18 +1,20 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Star } from 'lucide-react'
 import { DemoRange, DemoRow, DemoStack } from '@/shared/ui/demo-kit'
 import styles from '../../playground.module.css'
 
 export function OpticalSizeGood() {
+  const { t } = useTranslation()
   const [size, setSize] = useState(16)
 
   return (
     <DemoStack>
       <DemoRange
-        label="Type size"
+        label={t('demo.typeSize')}
         name="icon-size-good"
-        min={12}
-        max={22}
+        min={14}
+        max={20}
         value={size}
         valueLabel={`${size}px`}
         onChange={(event) => setSize(Number(event.target.value))}
@@ -20,7 +22,7 @@ export function OpticalSizeGood() {
       <DemoRow>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: size }}>
           <Star size={size} />
-          Starred
+          {t('demo.starred')}
         </span>
       </DemoRow>
     </DemoStack>
@@ -28,26 +30,27 @@ export function OpticalSizeGood() {
 }
 
 export function OpticalSizeBad() {
+  const { t } = useTranslation()
   const [size, setSize] = useState(16)
 
   return (
     <DemoStack>
       <DemoRange
-        label="Type size"
+        label={t('demo.typeSize')}
         name="icon-size-bad"
         min={12}
         max={22}
         value={size}
-        valueLabel={`${size}px / icon 28px`}
+        valueLabel={t('demo.iconVsType', { size })}
         onChange={(event) => setSize(Number(event.target.value))}
       />
       <DemoRow>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: size }}>
           <Star size={28} />
-          Starred
+          {t('demo.starred')}
         </span>
       </DemoRow>
-      <p className={styles.meta}>The icon is a different object.</p>
+      <p className={styles.meta}>{t('demo.iconDifferent')}</p>
     </DemoStack>
   )
 }

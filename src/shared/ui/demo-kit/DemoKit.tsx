@@ -27,7 +27,7 @@ export function DemoRange({ label, valueLabel, id, ...props }: DemoRangeProps) {
         {label}
         {valueLabel ? <strong>{valueLabel}</strong> : null}
       </span>
-      <input id={rangeId} type="range" {...props} />
+      <input id={rangeId} type="range" className={styles.slider} {...props} />
     </label>
   )
 }

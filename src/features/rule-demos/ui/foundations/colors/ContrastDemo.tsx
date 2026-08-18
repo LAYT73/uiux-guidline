@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DemoRange, DemoStack } from '@/shared/ui/demo-kit'
 import styles from '../../playground.module.css'
 
@@ -31,8 +32,9 @@ function grey(level: number) {
 }
 
 export function ContrastGood() {
-  const [bg, setBg] = useState(18)
-  const [fg, setFg] = useState(236)
+  const { t } = useTranslation()
+  const [bg, setBg] = useState(16)
+  const [fg, setFg] = useState(240)
   const background = grey(bg)
   const color = grey(fg)
   const ratio = contrast(background, color)
@@ -40,30 +42,31 @@ export function ContrastGood() {
   return (
     <DemoStack>
       <DemoRange
-        label="Background"
+        label={t('demo.background')}
         name="c-bg-good"
         min={0}
-        max={60}
+        max={28}
         value={bg}
+        valueLabel={grey(bg)}
         onChange={(event) => setBg(Number(event.target.value))}
       />
       <DemoRange
-        label="Text"
+        label={t('demo.text')}
         name="c-fg-good"
-        min={180}
+        min={220}
         max={255}
         value={fg}
+        valueLabel={grey(fg)}
         onChange={(event) => setFg(Number(event.target.value))}
       />
-      <p className={ratio >= 4.5 ? styles.ok : styles.warn}>{ratio.toFixed(2)} : 1</p>
-      <p style={{ background, color, padding: 12, borderRadius: 8 }}>
-        Body text must stay at or above 4.5:1.
-      </p>
+      <p className={styles.ok}>{ratio.toFixed(2)} : 1</p>
+      <p style={{ background, color, padding: 12, borderRadius: 8 }}>{t('demo.contrastGood')}</p>
     </DemoStack>
   )
 }
 
 export function ContrastBad() {
+  const { t } = useTranslation()
   const [bg, setBg] = useState(48)
   const [fg, setFg] = useState(92)
   const background = grey(bg)
@@ -73,23 +76,25 @@ export function ContrastBad() {
   return (
     <DemoStack>
       <DemoRange
-        label="Background"
+        label={t('demo.background')}
         name="c-bg-bad"
         min={30}
         max={80}
         value={bg}
+        valueLabel={grey(bg)}
         onChange={(event) => setBg(Number(event.target.value))}
       />
       <DemoRange
-        label="Text"
+        label={t('demo.text')}
         name="c-fg-bad"
         min={70}
         max={120}
         value={fg}
+        valueLabel={grey(fg)}
         onChange={(event) => setFg(Number(event.target.value))}
       />
       <p className={styles.warn}>{ratio.toFixed(2)} : 1</p>
-      <p style={{ background, color, padding: 12, borderRadius: 8 }}>Looks soft. Fails in daylight.</p>
+      <p style={{ background, color, padding: 12, borderRadius: 8 }}>{t('demo.contrastBad')}</p>
     </DemoStack>
   )
 }

@@ -6,12 +6,15 @@
   height: 40px;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  background: var(--bg-elevated);
+  background: color-mix(in srgb, var(--bg-elevated) 80%, transparent);
   color: var(--text);
   cursor: pointer;
-  transition: background var(--duration-fast) var(--ease-out);
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
 }
 
 .root:hover:not(:disabled) {
   background: var(--bg-hover);
+  border-color: var(--border-strong);
 }

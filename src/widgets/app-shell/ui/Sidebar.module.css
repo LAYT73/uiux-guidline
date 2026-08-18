@@ -90,4 +90,5 @@
 .active {
   color: var(--accent);
   background: var(--accent-soft);
+  font-weight: 600;
 }

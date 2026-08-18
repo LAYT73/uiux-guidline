@@ -16,6 +16,10 @@
     "comingSoon": "This topic is being written. The interactive examples will land with the next section.",
     "home": "Overview",
     "close": "Close",
+    "reset": "Reset example",
+    "notice": "What to notice",
+    "doLead": "Correct — the controls cannot break this rule.",
+    "dontLead": "Incorrect — still usable, just the wrong pattern.",
     "goodHint": "Why this works",
     "badHint": "Why this fails"
   },
@@ -88,39 +92,39 @@
       "scale": {
         "title": "Space on a 4/8 scale",
         "description": "A shared scale (4, 8, 12, 16, 24…) is a rhythm, not decoration. Random gaps force the eye to re-measure every block. Pick a step, then only use those numbers — even when a slider tempts you off-grid.",
-        "goodHint": "The gap snaps to the scale. Related tiles stay in one beat.",
-        "badHint": "7px, 11px, 13px look 'fine' until you put them next to each other."
+        "goodHint": "Drag Gap: it only lands on 4 / 8 / 12 / 16 / 24 / 32. That snap is the scale.",
+        "badHint": "Odd pixels (7, 11, 13) look fine alone and noisy as a set."
       },
       "proximity": {
         "title": "Related things sit closer",
         "description": "Proximity is meaning. A label belongs to its field because of the small gap between them — not because of a box. Equal spacing everywhere flattens the relationship and makes the form slower to parse.",
-        "goodHint": "Tight inside a group, looser between groups. Drag to feel the grouping.",
-        "badHint": "The same gap between label, field, and the next section. Nothing belongs together."
+        "goodHint": "Keep the inner gap small. The larger space between groups is what makes a form parse.",
+        "badHint": "The same gap everywhere. Label, field, and next section all feel equally related."
       },
       "padding-vs-gap": {
         "title": "Padding holds, gap separates",
         "description": "Padding is the breath inside a surface. Gap is the distance between siblings. Using margin as a dump for both creates collapse bugs and uneven edges. Keep inner space on the container, sibling space on the stack.",
-        "goodHint": "One padding on the card, one gap between rows. The edge stays even.",
-        "badHint": "Each row brings its own margin. The last item and the border never agree."
+        "goodHint": "One padding on the card, one gap between rows. The inner edge stays even.",
+        "badHint": "Each row brings its own margin. The last item never agrees with the border."
       }
     },
     "border-radius": {
       "scale": {
         "title": "Radius is a scale too",
         "description": "6, 10, 16, 24, pill. Mixing a 3px chip with a 28px input on the same row reads as two products glued together. Radius tokens keep the family resemblance when sizes change.",
-        "goodHint": "Every corner comes from the same ladder. Tune the step, not a one-off.",
+        "goodHint": "Every corner comes from the same ladder. Change the step, not a one-off radius.",
         "badHint": "Each control invents a radius. The row feels like a collage."
       },
       "proportional": {
         "title": "Bigger surfaces, rounder corners",
         "description": "A 40px button with a 24px radius looks swollen. A large card with 4px corners looks clipped. Radius should grow with the element so curvature stays optically similar.",
-        "goodHint": "Small control, small radius. Large card, larger radius. Scale the box and watch it hold.",
-        "badHint": "A pill radius on a tiny chip and a sharp corner on a huge card — both look wrong."
+        "goodHint": "Scale the box. Radius grows with it, so the curve stays optically similar.",
+        "badHint": "A pill on a tiny chip and a sharp corner on a huge card — both look wrong."
       },
       "pill-vs-form": {
         "title": "Pills for tags, not for typing",
         "description": "A stadium shape says 'chip / filter / status'. A text field is a box you enter. Pill-shaped inputs hide caret position and feel like buttons. Keep forms quietly rounded; save the pill for things you tap, not things you type.",
-        "goodHint": "The field is a rectangle. The tag next to it can be a pill.",
+        "goodHint": "The field stays a rectangle. The tag beside it can be a pill.",
         "badHint": "Type into a stadium. The shape argues with the task."
       }
     },
@@ -134,14 +138,14 @@
       "measure": {
         "title": "Keep the line 45–75 characters",
         "description": "The eye returns to the next line. Too wide and it loses the start; too narrow and it chops phrases. Measure is a reading tool, not a layout leftover.",
-        "goodHint": "Stay near 65ch. The paragraph is easy to scan.",
-        "badHint": "A full-bleed paragraph. Your eye swims to find the next line."
+        "goodHint": "Stay between 45 and 75 characters. The eye finds the next line.",
+        "badHint": "A full-bleed paragraph. Your eye swims to find the start of the next line."
       },
       "line-height": {
         "title": "Leading is part of the typeface",
         "description": "Body copy wants ~1.5; display wants tighter. Cramped leading is not 'more content' — it is friction. Pair line-height with size, then stop tweaking per paragraph.",
-        "goodHint": "Comfortable leading at body size. You can read a block without squinting.",
-        "badHint": "Line-height 1.05 on body text. It looks like a screenshot of a bug."
+        "goodHint": "Keep leading near 1.5 for body. You can read a block without colliding descenders.",
+        "badHint": "Line-height ~1.05 on body text. It looks like a screenshot of a bug."
       }
     },
     "colors": {
@@ -149,12 +153,12 @@
         "title": "Name the role, not the hex",
         "description": "Accent, surface, danger are roles. Hard-coded #E8A54B in twelve files cannot survive a theme switch. Tokens let dark and light share meaning while the paint changes.",
         "goodHint": "The same card in both themes. The accent is a token, so contrast holds.",
-        "badHint": "A hex that looked fine on dark, now vanishes on light."
+        "badHint": "A hex that looked fine on dark vanishes on light."
       },
       "contrast": {
         "title": "Contrast is a requirement, not a vibe",
         "description": "WCAG AA is 4.5:1 for body text. Pretty grey on pretty grey is still unreadable. Check contrast where people actually read — not on the Figma artboard at 200%.",
-        "goodHint": "Move the sliders. The ratio updates; the text stays legal.",
+        "goodHint": "Move the sliders: this tab cannot drop below a legal 4.5:1.",
         "badHint": "Muted on muted. Stylish, and unusable in sunlight."
       },
       "not-only-color": {
@@ -169,32 +173,32 @@
         "title": "Elevation is a short ladder",
         "description": "Rest, hover, overlay. Three steps are enough. If every card looks like a modal, nothing is lifted. Shadows should answer 'how close is this to me?', not decorate the default state.",
         "goodHint": "Hover the card. It steps up one rung, not ten.",
-        "badHint": "A 40px blur on a list row. Everything claims to be a dialog."
+        "badHint": "A huge blur on a list row. Everything claims to be a dialog."
       },
       "vs-border": {
         "title": "Borders for rest, shadows for lift",
         "description": "A 1px border is cheaper and cleaner for resting surfaces. Shadows belong to things that float (menus, modals, dragged cards). Stacking both at rest makes a muddy edge.",
-        "goodHint": "Resting card: border. Lifted card: shadow. Try both states.",
-        "badHint": "Border plus heavy shadow plus inner glow. The edge is a noise floor."
+        "goodHint": "Resting card: a border. Lifted card: a shadow. Try both states.",
+        "badHint": "Border plus heavy shadow plus glow. The edge is noise."
       }
     },
     "icons": {
       "optical-size": {
         "title": "Icons share the optical size of the text",
         "description": "A 12px icon next to 16px labels looks like a footnote. A 28px icon next to the same label looks like a different control. Match stroke and box to the type size they sit with.",
-        "goodHint": "Icon and label share a size. Change type size; the icon follows.",
-        "badHint": "The icon is a different scale. It reads as a separate object."
+        "goodHint": "Change type size. The icon follows, so they stay one control.",
+        "badHint": "The icon stays 28px. It reads as a separate object."
       },
       "align": {
         "title": "Align to the cap-height, not the SVG viewBox",
         "description": "Icons have optical padding in the file. Naive `align-items: center` can still look low. Nudge until the glyph and the word share a midline — especially in buttons and nav.",
-        "goodHint": "Icon and word sit on one line. Nothing feels dropped.",
+        "goodHint": "Icon and word sit on one midline. Nothing feels dropped.",
         "badHint": "The icon hangs below the label. You can feel the misalignment."
       },
       "consistency": {
         "title": "One family: stroke or fill, not both",
         "description": "Outline icons are one language; filled icons are another. Mixing them in a toolbar says 'we grabbed whatever was in the set'. Pick a style, a stroke width, and stay there unless the fill means selected.",
-        "goodHint": "All outline, same stroke. Selected can fill — that is a state, not a mix-up.",
+        "goodHint": "All outline, same stroke. Fill is a selected state, not a second family.",
         "badHint": "Outline, filled, two-tone. A toolbar of coincidences."
       }
     },
@@ -202,19 +206,19 @@
       "duration": {
         "title": "Short, honest durations",
         "description": "150ms for color, ~240ms for small movement, ~400ms for large panels. Longer than that is a performance. Users should feel response, not wait for choreography.",
-        "goodHint": "Click. The chip settles in a fraction of a second.",
-        "badHint": "A two-second bounce on a toggle. You start to doubt the click registered."
+        "goodHint": "Click Toggle. The chip settles in 150–280ms — a response, not a show.",
+        "badHint": "A two-second bounce. You start to doubt the click registered."
       },
       "purpose": {
         "title": "Motion has to mean something",
         "description": "Enter, exit, spatial change. If a button spins 360° on click, the motion is a joke sitting on the task. Animate the thing that changed, in the direction the user is going.",
-        "goodHint": "The panel slides from the control that opened it.",
+        "goodHint": "The panel grows from the control that opened it.",
         "badHint": "Everything wiggles. Motion is noise, so real change is harder to see."
       },
       "reduced": {
         "title": "Honor reduced motion",
         "description": "Vestibular disorders, batteries, preference. `prefers-reduced-motion` is not a nice-to-have — it is a contract. Instant states, no parallax, no large travel. The UI still works; it just stops swimming.",
-        "goodHint": "Toggle reduced motion. The state still changes; the travel disappears.",
+        "goodHint": "Turn on reduced motion. The state still changes; the travel disappears.",
         "badHint": "The animation always runs. The setting is theater."
       }
     },
@@ -222,48 +226,48 @@
       "hierarchy": {
         "title": "One primary action per view",
         "description": "Primary, secondary, ghost. If three buttons shout at the same volume, none of them is a decision. Hierarchy tells the eye where the next step is — especially in a toolbar or a dialog footer.",
-        "goodHint": "One filled button. The rest recede. Click around: the path is obvious.",
-        "badHint": "Three primaries. Every action is 'the' action, so none is."
+        "goodHint": "One filled button. The rest recede. The next step is obvious.",
+        "badHint": "Three primaries. Every action is “the” action, so none is."
       },
       "states": {
         "title": "Buttons have states, not just a default",
         "description": "Hover, focus, active, disabled, loading. A control that only looks good at rest will feel broken the moment someone touches it. Disabled must not steal focus; loading must not look dead.",
-        "goodHint": "Hover, focus, then trigger loading. The button stays the same object.",
+        "goodHint": "Hover, then Tab to Focus me, then Save. The control stays the same object.",
         "badHint": "No focus ring, a grey that looks like a label, loading with no spinner."
       },
       "vs-link": {
         "title": "Buttons do things, links go places",
         "description": "A button submits, opens, deletes. A link changes location. Using a button for navigation breaks open-in-new-tab. Using an anchor for actions breaks keyboard and crawlers. The element is the API.",
-        "goodHint": "Save is a button. Docs is a link — Cmd/Ctrl-click works.",
-        "badHint": "A span that looks like a button. You cannot tab to it, and it does not go anywhere."
+        "goodHint": "Save is a button. Docs is a link — open in a new tab works.",
+        "badHint": "A span dressed as a control. You cannot tab to it, and it goes nowhere."
       }
     },
     "inputs": {
       "labels": {
         "title": "A label is not a placeholder",
         "description": "Placeholders vanish on type, so the field loses its name. Labels stay. Hint text can live below. If the only name is inside the box, a filled field is anonymous.",
-        "goodHint": "The word Email stays while you type.",
+        "goodHint": "Type in the field. The word Email stays above it.",
         "badHint": "Type once — the name is gone. Was this email or username?"
       },
       "errors": {
         "title": "Errors sit next to the field that failed",
         "description": "A toast at the top of a long form is a scavenger hunt. Put the message under the input, set aria-invalid, and move focus. Timing: after submit or on blur — not on every keystroke for format.",
-        "goodHint": "Submit. The field explains itself and keeps focus nearby.",
-        "badHint": "A generic alert far away. The inputs look fine. Good luck."
+        "goodHint": "Submit an incomplete email. The message sits under the field.",
+        "badHint": "A generic alert far away. The inputs look fine."
       },
       "required": {
         "title": "Mark required before the user fails",
         "description": "Surprise required fields are a trap. Mark them in the label, or mark optional if most are required. Do not wait for submit to reveal the contract.",
-        "goodHint": "Required is in the label. You know before you try.",
-        "badHint": "Empty submit. Suddenly five fields were mandatory."
+        "goodHint": "Required is in the label before you try.",
+        "badHint": "Submit empty. Suddenly the field was mandatory."
       }
     },
     "cards": {
       "one-job": {
         "title": "A card has one job",
         "description": "Preview, choose, or contain a small form — pick one. A card that is a link, a menu, and a settings panel at once creates nested click wars and muddy scanning.",
-        "goodHint": "The card opens the project. Actions live inside, after the choice.",
-        "badHint": "Clicking the title, the star, or the card body all mean different things — accidentally."
+        "goodHint": "The card opens the project. Extra actions wait inside.",
+        "badHint": "Title, star, and body all mean different things — accidentally."
       },
       "nested-click": {
         "title": "Do not nest interactive targets",
@@ -276,7 +280,7 @@
       "focus-trap": {
         "title": "Trap focus, dismiss with Escape",
         "description": "A modal is a short conversation. Focus enters, Tab cycles, Escape and the overlay close, focus returns. Without that, keyboard users fall into the page behind the dimmer.",
-        "goodHint": "Open, Tab, Escape. You never lose where you were.",
+        "goodHint": "Open, Tab, Escape. Focus never falls onto the page behind.",
         "badHint": "Focus sits on the page behind. The dimmer is decoration."
       },
       "one-primary": {
@@ -304,13 +308,13 @@
       "numeric": {
         "title": "Numbers align on the right",
         "description": "Magnitudes compare by the left of the digit column — which is the right edge of the cell. Left-aligned money is a word, not a quantity. Keep units in the header, not in every cell.",
-        "goodHint": "Scan the column. 9 and 900 line up.",
+        "goodHint": "Scan the Hours column. 9 and 1280 share a right edge.",
         "badHint": "Left-aligned amounts. You have to read each one to compare."
       },
       "sticky": {
         "title": "Keep the header when the body scrolls",
         "description": "A table without a sticky header becomes a riddle after two screens. Pin the header (and the first column if rows are identity). The data can move; the legend cannot.",
-        "goodHint": "Scroll the body. You still know which column is which.",
+        "goodHint": "Scroll the body. The header stays, so columns keep their names.",
         "badHint": "The header leaves. Every row is unnamed numbers."
       },
       "density": {
@@ -324,13 +328,13 @@
       "current": {
         "title": "Show where I am",
         "description": "aria-current, a strong weight, a persistent mark. If every item looks equal, wayfinding is guesswork. The current item is not a hover state — it is location.",
-        "goodHint": "The active item stays marked after you click.",
+        "goodHint": "Click an item. It stays marked — that is location, not hover.",
         "badHint": "Nothing is current. You infer location from the page title alone."
       },
       "landmarks": {
         "title": "Nav is a landmark, not a pile of links",
         "description": "A nav with a name, a list, skip links. Landmark navigation is how assistive tech jumps. A header full of unlabelled divs is a maze with no doors.",
-        "goodHint": "This demo exposes a named nav. Jump tools can find it.",
+        "goodHint": "This is a named nav wrapping a list. Jump tools can find it.",
         "badHint": "Links in a div soup. No list, no name, no current."
       }
     },
@@ -338,14 +342,14 @@
       "max-width": {
         "title": "Give the page a measure",
         "description": "Full-bleed everything is not generous — it is exhausting. A max-width on reading and forms keeps the eye from travelling. Full-bleed is for media and atmospheres, not for every paragraph.",
-        "goodHint": "Stretch the column. Type stays in a readable measure.",
+        "goodHint": "Stretch the column. Type stays on a readable measure.",
         "badHint": "The text follows the window. On a wide screen it becomes a horizon."
       },
       "visual-order": {
         "title": "Visual order should match DOM order",
         "description": "CSS order and absolute placement can put the primary action first visually and last in the tab sequence. Keyboard users walk a different page. Layout with source, not with tricks.",
-        "goodHint": "Tab through. The path matches what you see.",
-        "badHint": "The button is on the left but last in the DOM. Tab jumps strangely."
+        "goodHint": "Tab through. The path matches what you see: Back, then Continue.",
+        "badHint": "Continue looks first, but is last in the DOM. Tab jumps strangely."
       }
     },
     "hierarchy": {
@@ -366,27 +370,27 @@
       "consistent": {
         "title": "Do not mix densities in one region",
         "description": "A marketing hero next to a spreadsheet in the same card is two products fighting. Keep a region at one density; change density across regions on purpose, with a seam.",
-        "goodHint": "One block, one density. Toggle it as a whole.",
+        "goodHint": "Toggle density as a whole. One block, one rhythm.",
         "badHint": "Airy title, cramped list, a huge empty footer. Three products."
       },
       "context": {
         "title": "Density follows the job",
         "description": "Dashboards can be compact. Onboarding cannot. Copying a data-dense table into a first-run screen is cruelty. Match density to risk and familiarity.",
-        "goodHint": "Same data, two jobs: browse vs edit. The spacing changes with the job.",
-        "badHint": "Onboarding squeezed like a Bloomberg terminal."
+        "goodHint": "Same data, two jobs: browse vs edit. Spacing follows the job.",
+        "badHint": "Onboarding squeezed like a spreadsheet."
       }
     },
     "alignment": {
       "grid": {
         "title": "Align to a grid, not by eye",
         "description": "A 4px or 8px grid is cheaper than optical guessing. Ragged left edges and mixed inset values look like a draft. Snap, then break the grid only for optical exceptions (icons, quotes).",
-        "goodHint": "Cards share a left edge. Shift the gutter and they stay a family.",
+        "goodHint": "Cards share a left edge. Shift the gutter; they stay a family.",
         "badHint": "Each block has its own indent. The column wobbles."
       },
       "long-text": {
         "title": "Do not center long text",
         "description": "Centered headlines can work. Centered paragraphs force the eye to find a new start every line. Left-align body; center only short, ceremonial lines.",
-        "goodHint": "The paragraph is left-aligned. Easy returns.",
+        "goodHint": "The paragraph is left-aligned. Easy returns to the next line.",
         "badHint": "A centered wall of text. Every line is a new hunt."
       }
     },
@@ -408,7 +412,7 @@
       "cta": {
         "title": "Let the call to action breathe",
         "description": "A primary button jammed against a paragraph is easy to miss and easy to mis-tap. Space around a CTA is a frame. It is not 'empty'.",
-        "goodHint": "Increase the air around Publish. It becomes the destination.",
+        "goodHint": "Give Publish 16–32px of air. It becomes the destination.",
         "badHint": "The button is glued to the copy. It looks like a footnote."
       },
       "breathing": {
@@ -436,13 +440,13 @@
       "immediate": {
         "title": "Answer the click immediately",
         "description": "A press without a response feels like a dead control. Disable, spin, or optimistic-update within 100ms. The work can be slow; the acknowledgement cannot.",
-        "goodHint": "Click Save. The button becomes Saving… before the result.",
+        "goodHint": "Click Save. It becomes Saving… before the result.",
         "badHint": "Click. Nothing. You click again and double-submit."
       },
       "silent-fail": {
         "title": "Failures must speak",
         "description": "A 400 with a still form is a lie. Show the error, keep the input, offer retry. Silence trains people to hammer the button.",
-        "goodHint": "The request fails. A message and retry appear.",
+        "goodHint": "The request fails. A message and Retry appear.",
         "badHint": "The spinner dies. The form looks successful. It is not."
       }
     },
@@ -470,7 +474,7 @@
       "constraints": {
         "title": "Make the invalid path hard",
         "description": "Disable the end date before the start date. Constrain input instead of scolding after. Errors that could have been prevented are a design failure.",
-        "goodHint": "The second date cannot precede the first.",
+        "goodHint": "The end date cannot precede the start date.",
         "badHint": "Any dates. Submit. Then a lecture."
       }
     },
@@ -484,7 +488,7 @@
       "layout-shift": {
         "title": "Do not jump the layout",
         "description": "Images without size, late banners, fonts swapping — CLS is a shove. Reserve space. Users miss buttons that move under their finger.",
-        "goodHint": "Toggle loaded content. The height stays.",
+        "goodHint": "Toggle the banner. The button stays put.",
         "badHint": "Content arrives and shoves the button down."
       }
     },
@@ -492,13 +496,13 @@
       "explain-action": {
         "title": "Empty is a next step, not a dead end",
         "description": "No projects yet → why, and a button to create one. Empty is onboarding. A blank table is a shrug.",
-        "goodHint": "Explanation plus a primary action.",
+        "goodHint": "Explanation plus a primary action. Empty is a next step.",
         "badHint": "No data. That is the whole message."
       },
       "dead-end": {
         "title": "Search empty still offers a path",
         "description": "Zero results should suggest clearing filters, trying another query, or creating the missing thing. A sad illustration with no control is a wall.",
-        "goodHint": "No matches, plus Clear filters.",
+        "goodHint": "No matches, plus Clear filters. You can leave the void.",
         "badHint": "A void. Filters stay on. You are stuck."
       }
     },
@@ -506,21 +510,263 @@
       "focus": {
         "title": "Focus must be visible",
         "description": "outline: none without a replacement is a locked door. Keyboard users need a ring that meets contrast. If you restyle it, keep 3:1 against the adjacent background.",
-        "goodHint": "Tab. The ring is obvious.",
+        "goodHint": "Tab. The ring is obvious and uses the focus token.",
         "badHint": "Tab. You guess where you are."
       },
       "icon-name": {
         "title": "Icon-only controls need a name",
         "description": "A trash glyph is not a name. aria-label, visually hidden text, or a tooltip that is also in the accessibility tree. Title attributes are a poor substitute.",
-        "goodHint": "The button announces Delete.",
+        "goodHint": "The button announces Delete draft.",
         "badHint": "The button announces… button. Or nothing."
       },
       "skip-link": {
         "title": "Offer a skip link",
         "description": "Repeated nav is a tax on keyboard and screen-reader users. Skip to content is the courtesy of a door past the lobby. This app has one — the bad example shows life without it.",
-        "goodHint": "The first Tab hits Skip to content.",
+        "goodHint": "The real header has Skip to content. This mini-nav shows why.",
         "badHint": "Twelve nav links before the article. Every page."
       }
     }
+  },
+  "demo": {
+    "save": "Save",
+    "saving": "Saving…",
+    "saved": "Saved",
+    "saveDraft": "Save draft",
+    "saveToServer": "Save to server",
+    "savedLocally": "Saved locally in this demo.",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleteFile": "Delete file",
+    "deleteProject": "Delete project",
+    "deleteNamed": "Delete {{name}}?",
+    "deleteDraft": "Delete draft",
+    "submit": "Submit",
+    "publish": "Publish",
+    "preview": "Preview",
+    "continue": "Continue",
+    "back": "Back",
+    "done": "Done",
+    "toggle": "Toggle",
+    "toggleSlow": "Toggle (2s bounce)",
+    "toggleBanner": "Toggle banner",
+    "load": "Load",
+    "unload": "Unload",
+    "showSkeleton": "Show skeleton",
+    "showContent": "Show content",
+    "openModal": "Open modal",
+    "openFakeOverlay": "Open fake overlay",
+    "more": "More",
+    "search": "Search",
+    "searchProjects": "Search projects",
+    "email": "Email",
+    "emailHint": "We send the receipt here.",
+    "name": "Name",
+    "nameRequired": "Name (required)",
+    "teamOptional": "Team (optional)",
+    "company": "Company",
+    "publicProfile": "Public profile",
+    "yes": "Yes",
+    "no": "No",
+    "on": "On",
+    "off": "Off",
+    "onState": "On — no extra click to see it.",
+    "offState": "Off — no extra click to see it.",
+    "gap": "Gap",
+    "padding": "Padding",
+    "measure": "Measure",
+    "lineHeight": "Line-height",
+    "duration": "Duration",
+    "column": "Column",
+    "gutter": "Gutter",
+    "frame": "Frame",
+    "background": "Background",
+    "text": "Text",
+    "displaySize": "Display size",
+    "typeSize": "Type size",
+    "surfaceSize": "Surface size",
+    "radiusStep": "Radius step",
+    "insideGroup": "Inside a group",
+    "everything": "Everything",
+    "spaceAroundCta": "Space around CTA",
+    "betweenSections": "Between sections",
+    "eachRowMargin": "Each row's margin",
+    "start": "Start",
+    "end": "End",
+    "intro": "Intro",
+    "details": "Details",
+    "footerWidgets": "Footer widgets",
+    "invoice": "Invoice",
+    "invoiceDue": "Due 12 March",
+    "invoiceBody": "Pay the remaining balance before the reminder turns into a late fee.",
+    "starred": "Starred",
+    "action": "Action",
+    "one": "One",
+    "two": "Two",
+    "three": "Three",
+    "inbox": "Inbox",
+    "adaInvoice": "Ada — invoice",
+    "graceReview": "Grace — review",
+    "comfortableDensity": "Comfortable density",
+    "editMode": "Edit mode",
+    "editCopy": "Name, role, and timezone — room to think.",
+    "browseCopy": "Ada Lovelace · Admin · UTC",
+    "projectSettings": "Project settings",
+    "billing": "Billing",
+    "members": "Members",
+    "overview": "Overview",
+    "settings": "Settings",
+    "product": "Product",
+    "home": "Home",
+    "work": "Work",
+    "docs": "Docs",
+    "saveOrDocs": "Save / docs",
+    "focusMe": "Focus me",
+    "disabledGuess": "Disabled?",
+    "newProject": "New project",
+    "projectCreated": "Project created.",
+    "noProjects": "No projects yet. Start with a template — it takes a minute.",
+    "noData": "No data",
+    "noMatches": "No matches for “{{query}}”.",
+    "clearFilters": "Clear filters",
+    "showingAll": "Showing all invoices.",
+    "zebraInvoices": "zebra invoices",
+    "createAnyway": "Create “{{query}}”",
+    "lateBannerOk": "Late image / banner — space was reserved.",
+    "stayPut": "I stay put",
+    "surpriseBanner": "Surprise banner",
+    "getShoved": "I get shoved",
+    "cannotUndo": "This cannot be undone.",
+    "deletedNamed": "Deleted after a named confirm.",
+    "goneNoUndo": "Gone. No name, no undo.",
+    "endBeforeStart": "End cannot be before start.",
+    "looksLikeButton": "Looks like a button. Is a button.",
+    "looksLikeCaption": "Looks like a caption. Deletes on click.",
+    "deletedAlert": "Deleted",
+    "download": "Download",
+    "projectName": "Project name",
+    "notClickable": "Updated 2h ago · not clickable",
+    "clicksRecorded": "Clicks recorded after 1.2s: {{n}}. Easy to double-submit.",
+    "silentFail": "The spinner stops. No error. Did it work?",
+    "retry": "Retry",
+    "requestFailed": "Could not save. Try again.",
+    "readyToShip": "Ready to ship the collection?",
+    "editorChrome": "Editor chrome",
+    "hoverChrome": "Hover the chrome",
+    "tabVisualOrder": "Tab through. DOM order is visual order.",
+    "continueFirst": "Continue looks first, but is last in the DOM.",
+    "measureCopy": "Reading and forms stay on a measure. The column can grow; the text does not become a horizon.",
+    "fullBleedCopy": "This paragraph always fills the frame, even when the frame is a monitor. The next line is a long swim back.",
+    "oneH1": "One H1. Sections are H2.",
+    "threeH1": "Three H1s. The outline shouts.",
+    "revenueSkim": "Revenue this quarter. The number is the skim target.",
+    "quarterRevenue": "248k",
+    "everyLineBold": "Every line is semibold. Hierarchy collapsed.",
+    "equalGaps": "Equal gaps. Delete is in the family.",
+    "profileCard": "Profile — name and avatar.",
+    "billingCard": "Billing — plan and invoices.",
+    "profile": "Profile",
+    "mixedCard": "Name, avatar, plan, invoices, and delete account.",
+    "threeDensities": "Three densities, one card.",
+    "onboardingDense": "Welcome! Confirm email, company, seat, SSO, billing, and two-factor before you continue.",
+    "spreadsheetDensity": "First-run copy at spreadsheet density.",
+    "ownIndent": "Each block picked its own indent.",
+    "leftAlignCopy": "Left-aligned body copy lets the eye return to a stable edge. Centered display type can still sit above it.",
+    "centerAlignCopy": "Centered paragraphs force a new starting point on every line, so reading becomes a series of little hunts instead of a rhythm.",
+    "sprint": "Sprint",
+    "points": "Points",
+    "project": "Project",
+    "hours": "Hours",
+    "team": "Team",
+    "status": "Status",
+    "design": "Design",
+    "inReview": "In review",
+    "api": "API",
+    "shipped": "Shipped",
+    "qa": "QA",
+    "blocked": "Blocked",
+    "namedNav": "A named nav landmark wrapping a list.",
+    "divSoup": "Div soup. No nav, no list, no names.",
+    "clickedNotCurrent": "Clicked {{current}}, but nothing looks current.",
+    "areYouSure": "Are you sure?",
+    "renameFile": "Rename file",
+    "fileName": "File name",
+    "fakeModal": "Looks modal. Focus still lives on the page behind.",
+    "nameVanished": "The name vanished.",
+    "nameInPlaceholder": "The name lives only in the placeholder.",
+    "enterEmail": "Enter an email with @.",
+    "invalidForm": "Invalid form.",
+    "nameSurprise": "Name was required. Surprise.",
+    "keyboardHint": "Arrows move. Enter selects. Escape closes.",
+    "hoverOnly": "Hover-only. Leave the box and it vanishes.",
+    "draft": "Draft",
+    "review": "Review",
+    "published": "Published",
+    "archived": "Archived",
+    "openedProject": "Opened project.",
+    "clickCardParts": "Click title, star, or body.",
+    "bodyPreview": "Body click: preview",
+    "titleRename": "Title click: rename",
+    "starFavorite": "Star click: favorite",
+    "auroraNotes": "Aurora notes",
+    "cardOpens": "Card opens. Menu is separate.",
+    "openedMenu": "Opened menu",
+    "projectMenu": "Project menu",
+    "invalidNesting": "Invalid nesting. Tab order and announcement fight.",
+    "notLinkOrButton": "This is not a link or a button.",
+    "spanMeta": "A span. No Enter key, no open-in-new-tab.",
+    "focusRingHint": "Tab to the middle button. The focus ring is part of the control.",
+    "notAButton": "Not a button. No hover, no focus, no loading.",
+    "measureSample": "The quickest way to ruin a paragraph is to stretch it across the full viewport. The eye cannot find the start of the next line, so comprehension drops even if the typeface is beautiful.",
+    "lineHeightSample": "Line-height is not a decoration. Body copy needs air so the next line does not collide with descenders. Display type can sit tighter because it is short.",
+    "contrastGood": "Body text must stay at or above 4.5:1.",
+    "contrastBad": "Looks soft. Fails in daylight.",
+    "iconDifferent": "The icon is a different object.",
+    "waitChoreography": "You wait for the choreography to finish.",
+    "changeState": "Change state",
+    "changeStateAlways": "Change state (always animates)",
+    "instantState": "Instant state change.",
+    "spatialTravel": "Spatial travel enabled.",
+    "ignoresReduced": "Ignores prefers-reduced-motion.",
+    "simulateReduced": "Simulate reduced motion",
+    "panelFromControl": "The panel grows from the control that opened it.",
+    "everythingWiggles": "Everything wiggles on click.",
+    "openPanel": "Open panel",
+    "firstRow": "First row",
+    "secondRow": "Second row",
+    "thirdRow": "Third row",
+    "betweenGroups": "{{inner}}px / {{outer}}px between groups",
+    "iconVsType": "{{size}}px / icon 28px",
+    "edgeLouder": "The edge is louder than the content.",
+    "anotherListRow": "Another list row",
+    "bothModal": "Both claim to be a modal.",
+    "ownCorner": "Each control picked its own corner.",
+    "hoverCard": "Hover me",
+    "restingCard": "Resting",
+    "liftedCard": "Lifted",
+    "tokenCard": "Accent comes from a token.",
+    "hexCard": "Accent is a raw hex.",
+    "error": "Error",
+    "errorWithIcon": "Error — missing email",
+    "errorColorOnly": "Something is wrong, but only the border changed.",
+    "okStatus": "Paid",
+    "warnStatus": "Overdue",
+    "tabFocus": "Tab through. The ring uses the token focus color.",
+    "outlineNone": "outline: none. Tab and guess.",
+    "announcesDelete": "Announces “Delete draft”.",
+    "noName": "No accessible name.",
+    "skipHint": "The first Tab hits Skip to content — try it in the real header.",
+    "noSkip": "Eight links before content. No skip.",
+    "linkN": "Link {{n}}",
+    "northwind": "Northwind",
+    "aurora": "Aurora",
+    "harbor": "Harbor",
+    "statusOn": "{{state}} — no extra click to see it.",
+    "hits": "Hits: {{n}}",
+    "betweenGroupsShort": "{{inner}}px inside / {{outer}}px between groups",
+    "inReviewLong": "In review with legal and two extra stakeholders who left comments",
+    "compact": "Compact",
+    "subscribe": "Subscribe",
+    "loading": "Loading…",
+    "filter": "Filter"
   }
 }

@@ -1,20 +1,22 @@
+import { useTranslation } from 'react-i18next'
 import { DemoRow, DemoStack } from '@/shared/ui/demo-kit'
 import { Button } from '@/shared/ui/button'
 import styles from '../../playground.module.css'
 
 export function VsLinkGood() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <DemoRow>
         <Button
           onClick={() => {
-            window.alert('Saved locally in this demo.')
+            window.alert(t('demo.savedLocally'))
           }}
         >
-          Save
+          {t('demo.save')}
         </Button>
         <a href="https://www.w3.org/WAI/" target="_blank" rel="noreferrer" style={{ color: 'var(--accent)' }}>
-          Accessibility docs
+          {t('demo.docs')}
         </a>
       </DemoRow>
     </DemoStack>
@@ -22,19 +24,20 @@ export function VsLinkGood() {
 }
 
 export function VsLinkBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <DemoRow>
         <span
           className={styles.chip}
           onClick={() => {
-            window.alert('This is not a link or a button.')
+            window.alert(t('demo.notLinkOrButton'))
           }}
         >
-          Save / docs
+          {t('demo.saveOrDocs')}
         </span>
       </DemoRow>
-      <p className={styles.meta}>A span. No Enter key, no open-in-new-tab.</p>
+      <p className={styles.meta}>{t('demo.spanMeta')}</p>
     </DemoStack>
   )
 }

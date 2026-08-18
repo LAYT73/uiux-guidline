@@ -1,19 +1,21 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DemoStack, FakeCard } from '@/shared/ui/demo-kit'
 import { Button } from '@/shared/ui/button'
 import styles from '../playground.module.css'
 
 export function ExplainActionGood() {
+  const { t } = useTranslation()
   const [created, setCreated] = useState(false)
   return (
     <DemoStack>
       {created ? (
-        <p className={styles.ok}>Project created.</p>
+        <p className={styles.ok}>{t('demo.projectCreated')}</p>
       ) : (
         <FakeCard>
-          <p>No projects yet. Start with a template — it takes a minute.</p>
+          <p>{t('demo.noProjects')}</p>
           <div style={{ marginTop: 12 }}>
-            <Button onClick={() => setCreated(true)}>New project</Button>
+            <Button onClick={() => setCreated(true)}>{t('demo.newProject')}</Button>
           </div>
         </FakeCard>
       )}
@@ -22,39 +24,42 @@ export function ExplainActionGood() {
 }
 
 export function ExplainActionBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <FakeCard>
-        <p className={styles.meta}>No data</p>
+        <p className={styles.meta}>{t('demo.noData')}</p>
       </FakeCard>
     </DemoStack>
   )
 }
 
 export function DeadEndGood() {
-  const [query, setQuery] = useState('zebra invoices')
+  const { t } = useTranslation()
+  const [query, setQuery] = useState(t('demo.zebraInvoices'))
   return (
     <DemoStack>
-      <input className={styles.input} value={query} onChange={(e) => setQuery(e.target.value)} aria-label="Search" />
+      <input className={styles.input} value={query} onChange={(e) => setQuery(e.target.value)} aria-label={t('demo.search')} />
       {query ? (
         <>
-          <p className={styles.meta}>No matches for “{query}”.</p>
+          <p className={styles.meta}>{t('demo.noMatches', { query })}</p>
           <Button variant="secondary" onClick={() => setQuery('')}>
-            Clear search
+            {t('demo.clearFilters')}
           </Button>
         </>
       ) : (
-        <p className={styles.ok}>Showing all invoices.</p>
+        <p className={styles.ok}>{t('demo.showingAll')}</p>
       )}
     </DemoStack>
   )
 }
 
 export function DeadEndBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
-      <input className={styles.input} defaultValue="zebra invoices" aria-label="Search" />
-      <p className={styles.meta}>0 results</p>
+      <input className={styles.input} defaultValue={t('demo.zebraInvoices')} aria-label={t('demo.search')} />
+      <p className={styles.meta}>{t('demo.noData')}</p>
     </DemoStack>
   )
 }

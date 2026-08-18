@@ -20,7 +20,7 @@ body {
   font-size: var(--text-md);
   line-height: var(--leading-body);
   color: var(--text);
-  background: var(--bg);
+  background: var(--glow), var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

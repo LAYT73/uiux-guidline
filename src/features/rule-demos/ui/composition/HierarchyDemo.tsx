@@ -1,41 +1,46 @@
+import { useTranslation } from 'react-i18next'
 import { DemoStack } from '@/shared/ui/demo-kit'
 import styles from '../playground.module.css'
 
 export function OneH1Good() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
-      <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 22 }}>Project settings</h1>
-      <h2 style={{ fontSize: 15, marginTop: 8 }}>Billing</h2>
-      <p className={styles.meta}>One H1. Sections are H2.</p>
+      <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 22 }}>{t('demo.projectSettings')}</h1>
+      <h2 style={{ fontSize: 15, marginTop: 8 }}>{t('demo.billing')}</h2>
+      <p className={styles.meta}>{t('demo.oneH1')}</p>
     </DemoStack>
   )
 }
 
 export function OneH1Bad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
-      <h1 style={{ fontSize: 18 }}>Project settings</h1>
-      <h1 style={{ fontSize: 18 }}>Billing</h1>
-      <h1 style={{ fontSize: 18 }}>Members</h1>
-      <p className={styles.meta}>Three H1s. The outline shouts.</p>
+      <h1 style={{ fontSize: 18 }}>{t('demo.projectSettings')}</h1>
+      <h1 style={{ fontSize: 18 }}>{t('demo.billing')}</h1>
+      <h1 style={{ fontSize: 18 }}>{t('demo.members')}</h1>
+      <p className={styles.meta}>{t('demo.threeH1')}</p>
     </DemoStack>
   )
 }
 
 export function NotAllBoldGood() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
-      <p style={{ fontWeight: 650, fontSize: 18 }}>$12,400</p>
-      <p className={styles.meta}>Revenue this quarter. The number is the skim target.</p>
+      <p style={{ fontWeight: 650, fontSize: 18 }}>{t('demo.quarterRevenue')}</p>
+      <p className={styles.meta}>{t('demo.revenueSkim')}</p>
     </DemoStack>
   )
 }
 
 export function NotAllBoldBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <p style={{ fontWeight: 600, fontSize: 14, lineHeight: 1.5 }}>
-        Revenue this quarter is $12,400 and we think it will grow if we keep shipping and also the board asked for a memo.
+        {t('demo.everyLineBold')}
       </p>
     </DemoStack>
   )

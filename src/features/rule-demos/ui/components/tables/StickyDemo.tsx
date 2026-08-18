@@ -1,28 +1,32 @@
+import { useTranslation } from 'react-i18next'
 import { DemoStack } from '@/shared/ui/demo-kit'
 import styles from '../../playground.module.css'
 
-const rows = Array.from({ length: 12 }, (_, i) => [`Sprint ${i + 1}`, 8 + i * 3])
+const rows = Array.from({ length: 12 }, (_, i) => [i + 1, 8 + i * 3] as const)
 
 export function StickyGood() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <div className={styles.scroll}>
         <table className={styles.table}>
           <thead>
             <tr>
-              <th style={{ position: 'sticky', top: 0, background: 'var(--bg-elevated)' }}>Sprint</th>
+              <th style={{ position: 'sticky', top: 0, background: 'var(--bg-elevated)' }}>{t('demo.sprint')}</th>
               <th
                 className={styles.num}
                 style={{ position: 'sticky', top: 0, background: 'var(--bg-elevated)' }}
               >
-                Points
+                {t('demo.points')}
               </th>
             </tr>
           </thead>
           <tbody>
-            {rows.map(([name, pts]) => (
-              <tr key={String(name)}>
-                <td>{name}</td>
+            {rows.map(([n, pts]) => (
+              <tr key={n}>
+                <td>
+                  {t('demo.sprint')} {n}
+                </td>
                 <td className={styles.num}>{pts}</td>
               </tr>
             ))}
@@ -34,20 +38,23 @@ export function StickyGood() {
 }
 
 export function StickyBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <div className={styles.scroll}>
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Sprint</th>
-              <th className={styles.num}>Points</th>
+              <th>{t('demo.sprint')}</th>
+              <th className={styles.num}>{t('demo.points')}</th>
             </tr>
           </thead>
           <tbody>
-            {rows.map(([name, pts]) => (
-              <tr key={String(name)}>
-                <td>{name}</td>
+            {rows.map(([n, pts]) => (
+              <tr key={n}>
+                <td>
+                  {t('demo.sprint')} {n}
+                </td>
                 <td className={styles.num}>{pts}</td>
               </tr>
             ))}

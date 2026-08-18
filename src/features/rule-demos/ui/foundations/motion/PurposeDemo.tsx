@@ -1,15 +1,17 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { AnimatePresence, motion } from 'motion/react'
 import { DemoStack, FakeCard } from '@/shared/ui/demo-kit'
 import styles from '../../playground.module.css'
 
 export function PurposeGood() {
+  const { t } = useTranslation()
   const [open, setOpen] = useState(false)
 
   return (
     <DemoStack>
       <button type="button" className={styles.chip} onClick={() => setOpen((v) => !v)}>
-        {open ? 'Close panel' : 'Open panel'}
+        {open ? t('demo.done') : t('demo.openPanel')}
       </button>
       <AnimatePresence>
         {open ? (
@@ -20,7 +22,7 @@ export function PurposeGood() {
             transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
             style={{ overflow: 'hidden' }}
           >
-            <FakeCard>The panel grows from the control that opened it.</FakeCard>
+            <FakeCard>{t('demo.panelFromControl')}</FakeCard>
           </motion.div>
         ) : null}
       </AnimatePresence>
@@ -29,6 +31,7 @@ export function PurposeGood() {
 }
 
 export function PurposeBad() {
+  const { t } = useTranslation()
   const [spin, setSpin] = useState(0)
 
   return (
@@ -40,9 +43,9 @@ export function PurposeBad() {
         transition={{ duration: 0.8 }}
         onClick={() => setSpin((v) => v + 360)}
       >
-        Save
+        {t('demo.save')}
       </motion.button>
-      <p className={styles.meta}>The spin does not map to saving.</p>
+      <p className={styles.meta}>{t('demo.everythingWiggles')}</p>
     </DemoStack>
   )
 }

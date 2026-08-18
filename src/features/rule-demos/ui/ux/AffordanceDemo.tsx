@@ -1,47 +1,52 @@
+import { useTranslation } from 'react-i18next'
 import { DemoStack } from '@/shared/ui/demo-kit'
 import { Button } from '@/shared/ui/button'
 import styles from '../playground.module.css'
 
 export function LooksLikeGood() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
-      <Button>Delete file</Button>
-      <p className={styles.meta}>Looks like a button. Is a button.</p>
+      <Button>{t('demo.deleteFile')}</Button>
+      <p className={styles.meta}>{t('demo.looksLikeButton')}</p>
     </DemoStack>
   )
 }
 
 export function LooksLikeBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <span
-        onClick={() => window.alert('Deleted')}
+        onClick={() => window.alert(t('demo.deletedAlert'))}
         style={{ color: 'var(--text-muted)', cursor: 'default' }}
       >
-        Delete file
+        {t('demo.deleteFile')}
       </span>
-      <p className={styles.meta}>Looks like a caption. Deletes on click.</p>
+      <p className={styles.meta}>{t('demo.looksLikeCaption')}</p>
     </DemoStack>
   )
 }
 
 export function CursorGood() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
-      <Button>Download</Button>
+      <Button>{t('demo.download')}</Button>
       <p className={styles.meta} style={{ cursor: 'default' }}>
-        Caption — default cursor.
+        {t('demo.looksLikeCaption')}
       </p>
     </DemoStack>
   )
 }
 
 export function CursorBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <div style={{ cursor: 'pointer' }}>
-        <p>Project name</p>
-        <p className={styles.meta}>Updated 2h ago · not clickable</p>
+        <p>{t('demo.projectName')}</p>
+        <p className={styles.meta}>{t('demo.notClickable')}</p>
       </div>
     </DemoStack>
   )

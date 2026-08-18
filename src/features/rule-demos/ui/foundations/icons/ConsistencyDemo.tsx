@@ -1,22 +1,24 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Bell, Home, Search, User } from 'lucide-react'
 import { DemoRow, DemoStack } from '@/shared/ui/demo-kit'
 import styles from '../../playground.module.css'
 
 const items = [
-  { id: 'home', Icon: Home, label: 'Home' },
-  { id: 'search', Icon: Search, label: 'Search' },
-  { id: 'alerts', Icon: Bell, label: 'Alerts' },
-  { id: 'you', Icon: User, label: 'You' },
-]
+  { id: 'home', Icon: Home, labelKey: 'home' },
+  { id: 'search', Icon: Search, labelKey: 'search' },
+  { id: 'alerts', Icon: Bell, labelKey: 'inbox' },
+  { id: 'you', Icon: User, labelKey: 'profile' },
+] as const
 
 export function ConsistencyGood() {
+  const { t } = useTranslation()
   const [selected, setSelected] = useState('home')
 
   return (
     <DemoStack>
       <DemoRow>
-        {items.map(({ id, Icon, label }) => (
+        {items.map(({ id, Icon, labelKey }) => (
           <button
             key={id}
             type="button"
@@ -25,34 +27,35 @@ export function ConsistencyGood() {
             onClick={() => setSelected(id)}
           >
             <Icon size={16} fill={selected === id ? 'currentColor' : 'none'} />
-            {label}
+            {t(`demo.${labelKey}`)}
           </button>
         ))}
       </DemoRow>
-      <p className={styles.meta}>Fill means selected — not a different icon set.</p>
+      <p className={styles.meta}>{t('demo.iconDifferent')}</p>
     </DemoStack>
   )
 }
 
 export function ConsistencyBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <DemoRow>
         <button type="button" className={styles.chip}>
           <Home size={16} />
-          Home
+          {t('demo.home')}
         </button>
         <button type="button" className={styles.chip}>
           <Search size={16} fill="currentColor" />
-          Search
+          {t('demo.search')}
         </button>
         <button type="button" className={styles.chip}>
           <Bell size={16} strokeWidth={1} />
-          Alerts
+          {t('demo.inbox')}
         </button>
         <button type="button" className={styles.chip}>
           <User size={20} />
-          You
+          {t('demo.profile')}
         </button>
       </DemoRow>
     </DemoStack>

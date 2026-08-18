@@ -1,17 +1,16 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DemoRange, DemoStack } from '@/shared/ui/demo-kit'
 import styles from '../../playground.module.css'
 
-const sample =
-  'The quickest way to ruin a paragraph is to stretch it across the full viewport. The eye cannot find the start of the next line, so comprehension drops even if the typeface is beautiful.'
-
 export function MeasureGood() {
+  const { t } = useTranslation()
   const [ch, setCh] = useState(62)
 
   return (
     <DemoStack>
       <DemoRange
-        label="Measure"
+        label={t('demo.measure')}
         name="measure-good"
         min={45}
         max={75}
@@ -19,18 +18,19 @@ export function MeasureGood() {
         valueLabel={`${ch}ch`}
         onChange={(event) => setCh(Number(event.target.value))}
       />
-      <p style={{ maxWidth: `${ch}ch`, fontSize: 14, lineHeight: 1.55 }}>{sample}</p>
+      <p style={{ maxWidth: `${ch}ch`, fontSize: 14, lineHeight: 1.55 }}>{t('demo.measureSample')}</p>
     </DemoStack>
   )
 }
 
 export function MeasureBad() {
+  const { t } = useTranslation()
   const [ch, setCh] = useState(110)
 
   return (
     <DemoStack>
       <DemoRange
-        label="Measure"
+        label={t('demo.measure')}
         name="measure-bad"
         min={90}
         max={140}
@@ -39,7 +39,7 @@ export function MeasureBad() {
         onChange={(event) => setCh(Number(event.target.value))}
       />
       <p className={styles.meta} style={{ maxWidth: `${ch}ch`, fontSize: 14, lineHeight: 1.55 }}>
-        {sample}
+        {t('demo.measureSample')}
       </p>
     </DemoStack>
   )
