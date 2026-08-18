@@ -1,0 +1,26 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.do {
+  color: var(--do);
+  background: var(--do-soft);
+}
+
+.dont {
+  color: var(--dont);
+  background: var(--dont-soft);
+}
+
+.neutral {
+  color: var(--text-muted);
+  background: var(--bg-muted);
+}

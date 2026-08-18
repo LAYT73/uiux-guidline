@@ -1,35 +1,35 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DemoRange, DemoStack } from '@/shared/ui/demo-kit'
 
-const sample =
-  'Line-height is not a decoration. Body copy needs air so the next line does not collide with descenders. Display type can sit tighter because it is short.'
-
 export function LineHeightGood() {
+  const { t } = useTranslation()
   const [leading, setLeading] = useState(1.55)
 
   return (
     <DemoStack>
       <DemoRange
-        label="Line-height"
+        label={t('demo.lineHeight')}
         name="lh-good"
-        min={140}
-        max={180}
+        min={145}
+        max={170}
         value={Math.round(leading * 100)}
         valueLabel={leading.toFixed(2)}
         onChange={(event) => setLeading(Number(event.target.value) / 100)}
       />
-      <p style={{ fontSize: 15, lineHeight: leading }}>{sample}</p>
+      <p style={{ fontSize: 15, lineHeight: leading }}>{t('demo.lineHeightSample')}</p>
     </DemoStack>
   )
 }
 
 export function LineHeightBad() {
+  const { t } = useTranslation()
   const [leading, setLeading] = useState(1.05)
 
   return (
     <DemoStack>
       <DemoRange
-        label="Line-height"
+        label={t('demo.lineHeight')}
         name="lh-bad"
         min={100}
         max={120}
@@ -37,7 +37,7 @@ export function LineHeightBad() {
         valueLabel={leading.toFixed(2)}
         onChange={(event) => setLeading(Number(event.target.value) / 100)}
       />
-      <p style={{ fontSize: 15, lineHeight: leading }}>{sample}</p>
+      <p style={{ fontSize: 15, lineHeight: leading }}>{t('demo.lineHeightSample')}</p>
     </DemoStack>
   )
 }

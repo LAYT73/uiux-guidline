@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DemoRow, DemoStack } from '@/shared/ui/demo-kit'
 import { Button } from '@/shared/ui/button'
 import styles from '../../playground.module.css'
 
 export function StatesGood() {
+  const { t } = useTranslation()
   const [loading, setLoading] = useState(false)
 
   return (
@@ -17,19 +19,20 @@ export function StatesGood() {
             window.setTimeout(() => setLoading(false), 1200)
           }}
         >
-          {loading ? 'Saving…' : 'Save'}
+          {loading ? t('demo.saving') : t('demo.save')}
         </Button>
-        <Button variant="secondary">Focus me</Button>
+        <Button variant="secondary">{t('demo.focusMe')}</Button>
         <Button variant="ghost" disabled>
-          Disabled
+          {t('demo.disabledGuess')}
         </Button>
       </DemoRow>
-      <p className={styles.meta}>Tab to the middle button. The focus ring is part of the control.</p>
+      <p className={styles.meta}>{t('demo.focusRingHint')}</p>
     </DemoStack>
   )
 }
 
 export function StatesBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <DemoRow>
@@ -41,11 +44,11 @@ export function StatesBad() {
             borderRadius: 4,
           }}
         >
-          Save
+          {t('demo.save')}
         </span>
-        <span style={{ color: 'var(--text-subtle)' }}>Disabled?</span>
+        <span style={{ color: 'var(--text-subtle)' }}>{t('demo.disabledGuess')}</span>
       </DemoRow>
-      <p className={styles.meta}>Not a button. No hover, no focus, no loading.</p>
+      <p className={styles.meta}>{t('demo.notAButton')}</p>
     </DemoStack>
   )
 }

@@ -1,26 +1,29 @@
+import { useTranslation } from 'react-i18next'
 import { DemoStack, FakeCard } from '@/shared/ui/demo-kit'
 import { Button } from '@/shared/ui/button'
 import styles from '../../playground.module.css'
 
 export function TokensGood() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
-      <p className={styles.meta}>Uses --accent and --bg-elevated. Switch the app theme.</p>
+      <p className={styles.meta}>{t('demo.tokenCard')}</p>
       <FakeCard>
-        <p style={{ fontFamily: 'var(--font-serif)', fontSize: 18, marginBottom: 8 }}>Season pass</p>
+        <p style={{ fontFamily: 'var(--font-serif)', fontSize: 18, marginBottom: 8 }}>{t('demo.product')}</p>
         <p className={styles.meta} style={{ marginBottom: 12 }}>
-          Billed yearly · cancel anytime
+          {t('demo.invoiceDue')}
         </p>
-        <Button>Subscribe</Button>
+        <Button>{t('demo.submit')}</Button>
       </FakeCard>
     </DemoStack>
   )
 }
 
 export function TokensBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
-      <p className={styles.meta}>Hard-coded gold on charcoal. Breaks in light theme.</p>
+      <p className={styles.meta}>{t('demo.hexCard')}</p>
       <div
         style={{
           background: '#1a1c22',
@@ -30,8 +33,8 @@ export function TokensBad() {
           padding: 16,
         }}
       >
-        <p style={{ fontSize: 18, marginBottom: 8 }}>Season pass</p>
-        <p style={{ color: '#9a917c', marginBottom: 12, fontSize: 13 }}>Billed yearly · cancel anytime</p>
+        <p style={{ fontSize: 18, marginBottom: 8 }}>{t('demo.product')}</p>
+        <p style={{ color: '#9a917c', marginBottom: 12, fontSize: 13 }}>{t('demo.invoiceDue')}</p>
         <button
           type="button"
           style={{
@@ -44,7 +47,7 @@ export function TokensBad() {
             cursor: 'pointer',
           }}
         >
-          Subscribe
+          {t('demo.submit')}
         </button>
       </div>
     </DemoStack>

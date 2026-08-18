@@ -1,48 +1,53 @@
+import { useTranslation } from 'react-i18next'
 import { DemoRow, DemoStack, FakeCard } from '@/shared/ui/demo-kit'
 import { Button } from '@/shared/ui/button'
 import styles from '../playground.module.css'
 
 export function GroupProximityGood() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <DemoRow>
-        <Button variant="secondary">Cancel</Button>
-        <Button>Save</Button>
+        <Button variant="secondary">{t('demo.cancel')}</Button>
+        <Button>{t('demo.save')}</Button>
       </DemoRow>
       <div style={{ height: 24 }} />
-      <Button variant="danger">Delete project</Button>
+      <Button variant="danger">{t('demo.deleteProject')}</Button>
     </DemoStack>
   )
 }
 
 export function GroupProximityBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <DemoRow>
-        <Button variant="secondary">Cancel</Button>
-        <Button>Save</Button>
-        <Button variant="danger">Delete project</Button>
+        <Button variant="secondary">{t('demo.cancel')}</Button>
+        <Button>{t('demo.save')}</Button>
+        <Button variant="danger">{t('demo.deleteProject')}</Button>
       </DemoRow>
-      <p className={styles.meta}>Equal gaps. Delete is in the family.</p>
+      <p className={styles.meta}>{t('demo.equalGaps')}</p>
     </DemoStack>
   )
 }
 
 export function GroupCardsGood() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
-      <FakeCard>Profile — name and avatar.</FakeCard>
-      <FakeCard>Billing — plan and invoices.</FakeCard>
+      <FakeCard>{t('demo.profileCard')}</FakeCard>
+      <FakeCard>{t('demo.billingCard')}</FakeCard>
     </DemoStack>
   )
 }
 
 export function GroupCardsBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <FakeCard>
-        <p>Profile</p>
-        <p className={styles.meta}>Name, avatar, plan, invoices, and delete account.</p>
+        <p>{t('demo.profile')}</p>
+        <p className={styles.meta}>{t('demo.mixedCard')}</p>
       </FakeCard>
     </DemoStack>
   )

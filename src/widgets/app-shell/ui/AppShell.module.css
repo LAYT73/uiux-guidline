@@ -1,6 +1,6 @@
 .root {
   display: grid;
-  grid-template-columns: 272px 1fr;
+  grid-template-columns: 280px 1fr;
   min-height: 100svh;
 }
 
@@ -10,7 +10,7 @@
   height: 100svh;
   border-right: 1px solid var(--border);
   background: var(--sidebar);
-  overflow: hidden;
+  overflow: auto;
 }
 
 .mainColumn {
@@ -21,9 +21,10 @@
 
 .main {
   flex: 1;
-  padding: var(--space-6) var(--space-7) var(--space-8);
-  max-width: 1120px;
+  padding: var(--space-7) var(--space-7) var(--space-8);
+  max-width: 1080px;
   width: 100%;
+  margin-inline: auto;
 }
 
 .drawer {
@@ -60,7 +61,7 @@
 
   .panel {
     position: relative;
-    width: min(320px, 86vw);
+    width: min(320px, 88vw);
     height: 100%;
     background: var(--sidebar);
     border-right: 1px solid var(--border);

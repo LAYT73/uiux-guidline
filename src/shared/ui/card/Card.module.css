@@ -4,4 +4,13 @@
   border-radius: var(--radius-lg);
   padding: var(--space-5);
   box-shadow: var(--shadow-rest);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.root:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-hover);
 }

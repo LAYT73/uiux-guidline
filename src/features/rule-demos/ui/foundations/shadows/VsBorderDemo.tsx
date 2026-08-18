@@ -1,14 +1,16 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DemoStack, FakeCard } from '@/shared/ui/demo-kit'
 import styles from '../../playground.module.css'
 
 export function VsBorderGood() {
+  const { t } = useTranslation()
   const [lifted, setLifted] = useState(false)
 
   return (
     <DemoStack>
       <button type="button" className={styles.chip} onClick={() => setLifted((v) => !v)}>
-        {lifted ? 'Show rest (border)' : 'Show lift (shadow)'}
+        {lifted ? t('demo.restingCard') : t('demo.liftedCard')}
       </button>
       <FakeCard
         style={{
@@ -16,13 +18,14 @@ export function VsBorderGood() {
           boxShadow: lifted ? 'var(--shadow-modal)' : 'none',
         }}
       >
-        Menu surface
+        {t('demo.editorChrome')}
       </FakeCard>
     </DemoStack>
   )
 }
 
 export function VsBorderBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <FakeCard
@@ -31,9 +34,9 @@ export function VsBorderBad() {
           boxShadow: 'var(--shadow-modal), inset 0 1px 8px rgba(0,0,0,.25)',
         }}
       >
-        Resting card with every effect at once
+        {t('demo.restingCard')}
       </FakeCard>
-      <p className={styles.meta}>The edge is louder than the content.</p>
+      <p className={styles.meta}>{t('demo.edgeLouder')}</p>
     </DemoStack>
   )
 }

@@ -1,61 +1,65 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DemoStack, FakeCard } from '@/shared/ui/demo-kit'
+import { Switch } from '@/shared/ui/switch'
 import styles from '../playground.module.css'
 
 export function ConsistentGood() {
+  const { t } = useTranslation()
   const [air, setAir] = useState(false)
   const pad = air ? 18 : 8
+
   return (
     <DemoStack>
-      <label style={{ display: 'flex', gap: 8 }}>
-        <input type="checkbox" checked={air} onChange={(e) => setAir(e.target.checked)} />
-        Comfortable density
-      </label>
+      <Switch checked={air} label={t('demo.comfortableDensity')} onChange={setAir} />
       <FakeCard style={{ padding: pad, display: 'flex', flexDirection: 'column', gap: pad }}>
-        <strong>Inbox</strong>
-        <span>Ada — invoice</span>
-        <span>Grace — review</span>
+        <strong>{t('demo.inbox')}</strong>
+        <span>{t('demo.adaInvoice')}</span>
+        <span>{t('demo.graceReview')}</span>
       </FakeCard>
     </DemoStack>
   )
 }
 
 export function ConsistentBad() {
+  const { t } = useTranslation()
+
   return (
     <DemoStack>
       <FakeCard>
-        <p style={{ fontFamily: 'var(--font-serif)', fontSize: 22, marginBottom: 4 }}>Inbox</p>
-        <p style={{ fontSize: 12, lineHeight: 1.1 }}>Ada — invoice</p>
-        <p style={{ fontSize: 12, lineHeight: 1.1 }}>Grace — review</p>
+        <p style={{ fontFamily: 'var(--font-serif)', fontSize: 22, marginBottom: 4 }}>{t('demo.inbox')}</p>
+        <p style={{ fontSize: 12, lineHeight: 1.1 }}>{t('demo.adaInvoice')}</p>
+        <p style={{ fontSize: 12, lineHeight: 1.1 }}>{t('demo.graceReview')}</p>
         <div style={{ height: 48 }} />
-        <p className={styles.meta}>Three densities, one card.</p>
+        <p className={styles.meta}>{t('demo.threeDensities')}</p>
       </FakeCard>
     </DemoStack>
   )
 }
 
 export function ContextGood() {
+  const { t } = useTranslation()
   const [edit, setEdit] = useState(false)
+
   return (
     <DemoStack>
-      <label style={{ display: 'flex', gap: 8 }}>
-        <input type="checkbox" checked={edit} onChange={(e) => setEdit(e.target.checked)} />
-        Edit mode
-      </label>
+      <Switch checked={edit} label={t('demo.editMode')} onChange={setEdit} />
       <FakeCard style={{ padding: edit ? 16 : 8, fontSize: edit ? 16 : 12 }}>
-        {edit ? 'Name, role, and timezone — room to think.' : 'Ada Lovelace · Admin · UTC'}
+        {edit ? t('demo.editCopy') : t('demo.browseCopy')}
       </FakeCard>
     </DemoStack>
   )
 }
 
 export function ContextBad() {
+  const { t } = useTranslation()
+
   return (
     <DemoStack>
       <FakeCard style={{ padding: 4, fontSize: 11, lineHeight: 1.2 }}>
-        Welcome! Confirm email, company, seat, SSO, billing, and two-factor before you continue.
+        {t('demo.onboardingDense')}
       </FakeCard>
-      <p className={styles.meta}>First-run copy at spreadsheet density.</p>
+      <p className={styles.meta}>{t('demo.spreadsheetDensity')}</p>
     </DemoStack>
   )
 }

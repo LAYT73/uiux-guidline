@@ -1,50 +1,75 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DemoRange, DemoStack, FakeCard } from '@/shared/ui/demo-kit'
 import { Button } from '@/shared/ui/button'
 import styles from '../playground.module.css'
 
 export function CtaGood() {
+  const { t } = useTranslation()
   const [space, setSpace] = useState(24)
+
   return (
     <DemoStack>
-      <DemoRange label="Space around CTA" name="cta-good" min={8} max={40} value={space} valueLabel={`${space}px`} onChange={(e) => setSpace(Number(e.target.value))} />
-      <p className={styles.meta}>Ready to ship the collection?</p>
+      <DemoRange
+        label={t('demo.spaceAroundCta')}
+        name="cta-good"
+        min={16}
+        max={32}
+        value={space}
+        valueLabel={`${space}px`}
+        onChange={(e) => setSpace(Number(e.target.value))}
+      />
+      <p className={styles.meta}>{t('demo.readyToShip')}</p>
       <div style={{ marginTop: space, marginBottom: space }}>
-        <Button>Publish</Button>
+        <Button>{t('demo.publish')}</Button>
       </div>
     </DemoStack>
   )
 }
 
 export function CtaBad() {
+  const { t } = useTranslation()
+
   return (
     <DemoStack>
       <p className={styles.meta} style={{ marginBottom: 4 }}>
-        Ready to ship the collection?
+        {t('demo.readyToShip')}
       </p>
-      <Button>Publish</Button>
+      <Button>{t('demo.publish')}</Button>
     </DemoStack>
   )
 }
 
 export function BreathingGood() {
+  const { t } = useTranslation()
   const [space, setSpace] = useState(20)
+
   return (
     <DemoStack>
-      <DemoRange label="Between sections" name="air-good" min={8} max={40} value={space} valueLabel={`${space}px`} onChange={(e) => setSpace(Number(e.target.value))} />
-      <FakeCard>Intro</FakeCard>
+      <DemoRange
+        label={t('demo.betweenSections')}
+        name="air-good"
+        min={16}
+        max={32}
+        value={space}
+        valueLabel={`${space}px`}
+        onChange={(e) => setSpace(Number(e.target.value))}
+      />
+      <FakeCard>{t('demo.intro')}</FakeCard>
       <div style={{ height: space }} />
-      <FakeCard>Details</FakeCard>
+      <FakeCard>{t('demo.details')}</FakeCard>
     </DemoStack>
   )
 }
 
 export function BreathingBad() {
+  const { t } = useTranslation()
+
   return (
     <DemoStack>
-      <FakeCard style={{ margin: 0 }}>Intro</FakeCard>
-      <FakeCard style={{ margin: 0, borderRadius: 0 }}>Details</FakeCard>
-      <FakeCard style={{ margin: 0 }}>Footer widgets</FakeCard>
+      <FakeCard style={{ margin: 0 }}>{t('demo.intro')}</FakeCard>
+      <FakeCard style={{ margin: 0, borderRadius: 0 }}>{t('demo.details')}</FakeCard>
+      <FakeCard style={{ margin: 0 }}>{t('demo.footerWidgets')}</FakeCard>
     </DemoStack>
   )
 }

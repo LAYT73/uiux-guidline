@@ -1,15 +1,17 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DemoStack } from '@/shared/ui/demo-kit'
 import styles from '../../playground.module.css'
 
-const items = ['Overview', 'Billing', 'Members']
+const items = ['overview', 'billing', 'members'] as const
 
 export function CurrentGood() {
-  const [current, setCurrent] = useState('Overview')
+  const { t } = useTranslation()
+  const [current, setCurrent] = useState<(typeof items)[number]>('overview')
 
   return (
     <DemoStack>
-      <nav aria-label="Settings">
+      <nav aria-label={t('demo.settings')}>
         <ul style={{ display: 'flex', gap: 8, listStyle: 'none', margin: 0, padding: 0 }}>
           {items.map((item) => (
             <li key={item}>
@@ -26,7 +28,7 @@ export function CurrentGood() {
                   setCurrent(item)
                 }}
               >
-                {item}
+                {t(`demo.${item}`)}
               </a>
             </li>
           ))}
@@ -37,18 +39,19 @@ export function CurrentGood() {
 }
 
 export function CurrentBad() {
-  const [current, setCurrent] = useState('Overview')
+  const { t } = useTranslation()
+  const [current, setCurrent] = useState<(typeof items)[number]>('overview')
 
   return (
     <DemoStack>
       <div style={{ display: 'flex', gap: 8 }}>
         {items.map((item) => (
           <span key={item} className={styles.chip} onClick={() => setCurrent(item)}>
-            {item}
+            {t(`demo.${item}`)}
           </span>
         ))}
       </div>
-      <p className={styles.meta}>Clicked {current}, but nothing looks current.</p>
+      <p className={styles.meta}>{t('demo.clickedNotCurrent', { current: t(`demo.${current}`) })}</p>
     </DemoStack>
   )
 }

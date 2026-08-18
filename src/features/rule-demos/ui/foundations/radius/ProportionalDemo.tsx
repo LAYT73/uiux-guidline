@@ -1,17 +1,19 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DemoRange, DemoStack, FakeCard } from '@/shared/ui/demo-kit'
 import styles from '../../playground.module.css'
 
 export function ProportionalGood() {
+  const { t } = useTranslation()
   const [size, setSize] = useState(72)
 
   return (
     <DemoStack>
       <DemoRange
-        label="Surface size"
+        label={t('demo.surfaceSize')}
         name="radius-prop-good"
-        min={40}
-        max={140}
+        min={56}
+        max={120}
         value={size}
         valueLabel={`${size}px`}
         onChange={(event) => setSize(Number(event.target.value))}
@@ -30,7 +32,7 @@ export function ProportionalGood() {
           className={styles.chip}
           style={{ borderRadius: Math.max(6, Math.round(size * 0.08)) }}
         >
-          Action
+          {t('demo.action')}
         </button>
       </FakeCard>
     </DemoStack>
@@ -38,12 +40,13 @@ export function ProportionalGood() {
 }
 
 export function ProportionalBad() {
+  const { t } = useTranslation()
   const [size, setSize] = useState(72)
 
   return (
     <DemoStack>
       <DemoRange
-        label="Surface size"
+        label={t('demo.surfaceSize')}
         name="radius-prop-bad"
         min={40}
         max={140}
@@ -61,7 +64,7 @@ export function ProportionalBad() {
         }}
       >
         <button type="button" className={styles.chip} style={{ borderRadius: 999 }}>
-          Action
+          {t('demo.action')}
         </button>
       </FakeCard>
     </DemoStack>

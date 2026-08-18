@@ -1,26 +1,28 @@
+import { useTranslation } from 'react-i18next'
 import { DemoStack } from '@/shared/ui/demo-kit'
 import styles from '../../playground.module.css'
 
 const rows = [
-  ['Northwind', 9],
-  ['Aurora', 120],
-  ['Harbor', 1280],
-]
+  ['northwind', 9],
+  ['aurora', 120],
+  ['harbor', 1280],
+] as const
 
 export function NumericGood() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>Project</th>
-            <th className={styles.num}>Hours</th>
+            <th>{t('demo.project')}</th>
+            <th className={styles.num}>{t('demo.hours')}</th>
           </tr>
         </thead>
         <tbody>
           {rows.map(([name, hours]) => (
-            <tr key={String(name)}>
-              <td>{name}</td>
+            <tr key={name}>
+              <td>{t(`demo.${name}`)}</td>
               <td className={styles.num}>{hours}</td>
             </tr>
           ))}
@@ -31,20 +33,23 @@ export function NumericGood() {
 }
 
 export function NumericBad() {
+  const { t } = useTranslation()
   return (
     <DemoStack>
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>Project</th>
-            <th>Hours</th>
+            <th>{t('demo.project')}</th>
+            <th>{t('demo.hours')}</th>
           </tr>
         </thead>
         <tbody>
           {rows.map(([name, hours]) => (
-            <tr key={String(name)}>
-              <td>{name}</td>
-              <td>{hours} hrs</td>
+            <tr key={name}>
+              <td>{t(`demo.${name}`)}</td>
+              <td>
+                {hours} {t('demo.hours')}
+              </td>
             </tr>
           ))}
         </tbody>

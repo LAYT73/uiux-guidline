@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DemoRange, DemoStack } from '@/shared/ui/demo-kit'
 import styles from '../../playground.module.css'
 
@@ -11,13 +12,14 @@ function snap(value: number) {
 }
 
 export function ScaleGood() {
+  const { t } = useTranslation()
   const [raw, setRaw] = useState(16)
   const gap = snap(raw)
 
   return (
     <DemoStack>
       <DemoRange
-        label="Gap"
+        label={t('demo.gap')}
         name="spacing-scale-good"
         min={4}
         max={32}
@@ -35,12 +37,13 @@ export function ScaleGood() {
 }
 
 export function ScaleBad() {
+  const { t } = useTranslation()
   const [gap, setGap] = useState(11)
 
   return (
     <DemoStack>
       <DemoRange
-        label="Gap"
+        label={t('demo.gap')}
         name="spacing-scale-bad"
         min={5}
         max={19}
