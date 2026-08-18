@@ -5,6 +5,7 @@ import { getDemos } from './registry'
 import '../ui/foundations/register'
 import '../ui/components/register'
 import '../ui/composition/register'
+import '../ui/ux/register'
 
 function pick(root: unknown, id: string) {
   return id.split('.').reduce<unknown>((node, part) => {
