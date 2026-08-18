@@ -1,0 +1,16 @@
+.root {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-4);
+  z-index: 60;
+  padding: var(--space-2) var(--space-3);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.root:focus {
+  transform: none;
+}

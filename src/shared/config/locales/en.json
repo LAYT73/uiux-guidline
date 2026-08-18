@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "UI/UX Guideline",
+    "tagline": "Build interfaces that make sense."
+  },
+  "a11y": {
+    "skip": "Skip to content",
+    "openNav": "Open navigation",
+    "closeNav": "Close navigation",
+    "toggleTheme": "Toggle color theme",
+    "toggleLocale": "Switch language"
+  },
+  "common": {
+    "do": "Do",
+    "dont": "Don't",
+    "comingSoon": "This topic is being written. The interactive examples will land with the next section.",
+    "home": "Overview",
+    "close": "Close",
+    "goodHint": "Why this works",
+    "badHint": "Why this fails"
+  },
+  "home": {
+    "kicker": "Visual system of rules",
+    "title": "Build interfaces that make sense.",
+    "lead": "Not a gallery of pretty screens — a living guideline. Each rule has a name, a why, and two interactive examples: one that works, and one that hurts.",
+    "sectionsTitle": "Four layers",
+    "cta": "Start with spacing"
+  },
+  "topic": {
+    "notFound": "This topic does not exist.",
+    "backHome": "Back to overview"
+  },
+  "nav": {
+    "foundations": "Foundations",
+    "components": "Components",
+    "composition": "Composition",
+    "ux-principles": "UX principles"
+  },
+  "sections": {
+    "foundations": {
+      "title": "Foundations",
+      "description": "The tokens everything else is built on: space, type, color, motion."
+    },
+    "components": {
+      "title": "Components",
+      "description": "Buttons, fields, and surfaces people actually touch."
+    },
+    "composition": {
+      "title": "Composition",
+      "description": "How pieces sit together on a page — hierarchy, density, air."
+    },
+    "ux-principles": {
+      "title": "UX principles",
+      "description": "Behavior under stress: errors, waiting, emptiness, access."
+    }
+  },
+  "topics": {
+    "spacing": "Spacing",
+    "border-radius": "Border radius",
+    "typography": "Typography",
+    "colors": "Colors",
+    "shadows": "Shadows",
+    "icons": "Icons",
+    "motion": "Motion",
+    "buttons": "Buttons",
+    "inputs": "Inputs",
+    "cards": "Cards",
+    "modals": "Modals",
+    "dropdowns": "Dropdowns",
+    "tables": "Tables",
+    "navigation": "Navigation",
+    "layout": "Layout",
+    "hierarchy": "Hierarchy",
+    "density": "Density",
+    "alignment": "Alignment",
+    "grouping": "Grouping",
+    "whitespace": "Whitespace",
+    "responsive": "Responsive",
+    "feedback": "Feedback",
+    "affordance": "Affordance",
+    "error-prevention": "Error prevention",
+    "loading-states": "Loading states",
+    "empty-states": "Empty states",
+    "accessibility": "Accessibility"
+  },
+  "rules": {}
+}
