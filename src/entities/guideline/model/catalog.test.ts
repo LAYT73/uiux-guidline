@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { SECTIONS, TOPICS } from './catalog'
+import { RULES, SECTIONS, TOPICS } from './catalog'
 
 describe('guideline catalog', () => {
   it('registers four sections and twenty-seven topics', () => {
@@ -21,5 +21,9 @@ describe('guideline catalog', () => {
     const listed = SECTIONS.flatMap((section) => section.topicIds)
     expect(listed).toHaveLength(27)
     expect(new Set(listed).size).toBe(27)
+  })
+
+  it('ships sixty-four interactive rules', () => {
+    expect(RULES).toHaveLength(64)
   })
 })

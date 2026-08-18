@@ -1,6 +1,6 @@
 # Guideline index
 
-Four sections, 27 topics. Each topic ships 2–4 interactive rules (name, why, Do, Don't).
+Four sections, 27 topics, 64 interactive rules. Each topic ships 2–4 live Do / Don't pairs (name, why, good, bad).
 
 ## Foundations
 
