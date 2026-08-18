@@ -1,0 +1,60 @@
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--tint);
+  box-shadow: inset 3px 0 0 var(--bar);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  color: var(--text);
+}
+
+.icon {
+  display: flex;
+  flex: none;
+  padding-top: 2px;
+  color: var(--mark);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.content > * + * {
+  margin-top: var(--space-2);
+}
+
+.info {
+  --bar: var(--border-strong);
+  --tint: var(--bg-muted);
+  --mark: var(--text-muted);
+}
+
+.do {
+  --bar: var(--do);
+  --tint: var(--do-soft);
+  --mark: var(--do);
+}
+
+.dont {
+  --bar: var(--dont);
+  --tint: var(--dont-soft);
+  --mark: var(--dont);
+}
+
+.warning {
+  --bar: var(--accent);
+  --tint: var(--accent-soft);
+  --mark: var(--accent);
+}

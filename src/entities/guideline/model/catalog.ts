@@ -16,7 +16,15 @@ export const SECTIONS: Section[] = [
   },
   {
     id: 'components',
-    topicIds: ['buttons', 'inputs', 'cards', 'modals', 'dropdowns', 'tables', 'navigation'],
+    topicIds: [
+      'buttons',
+      'inputs',
+      'cards',
+      'modals',
+      'dropdowns',
+      'tables',
+      'navigation',
+    ],
   },
   {
     id: 'composition',

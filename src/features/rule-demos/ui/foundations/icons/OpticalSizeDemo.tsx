@@ -20,8 +20,8 @@ export function OpticalSizeGood() {
         onChange={(event) => setSize(Number(event.target.value))}
       />
       <DemoRow>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: size }}>
-          <Star size={size} />
+        <span className={styles.inlineIcon} style={{ fontSize: size }}>
+          <Star size={size} aria-hidden />
           {t('demo.starred')}
         </span>
       </DemoRow>
@@ -45,8 +45,8 @@ export function OpticalSizeBad() {
         onChange={(event) => setSize(Number(event.target.value))}
       />
       <DemoRow>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: size }}>
-          <Star size={28} />
+        <span className={styles.inlineIcon} style={{ fontSize: size }}>
+          <Star size={28} aria-hidden />
           {t('demo.starred')}
         </span>
       </DemoRow>

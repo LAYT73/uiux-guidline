@@ -1,6 +1,8 @@
+import { useMemo, useState } from 'react'
 import { NavLink } from 'react-router'
 import { useTranslation } from 'react-i18next'
-import { SECTIONS } from '@/entities/guideline'
+import { Search, X } from 'lucide-react'
+import { RULES, SECTIONS } from '@/entities/guideline'
 import { cx } from '@/shared/lib'
 import styles from './Sidebar.module.css'
 
@@ -10,6 +12,25 @@ type SidebarProps = {
 
 export function Sidebar({ onNavigate }: SidebarProps) {
   const { t } = useTranslation()
+  const [query, setQuery] = useState('')
+
+  const groups = useMemo(() => {
+    const needle = query.trim().toLowerCase()
+
+    return SECTIONS.map((section) => ({
+      id: section.id,
+      topics: section.topicIds
+        .filter(
+          (topicId) => !needle || t(`topics.${topicId}`).toLowerCase().includes(needle),
+        )
+        .map((topicId) => ({
+          id: topicId,
+          href: `/${section.id}/${topicId}`,
+          title: t(`topics.${topicId}`),
+          count: RULES.filter((rule) => rule.topicId === topicId).length,
+        })),
+    })).filter((section) => section.topics.length > 0)
+  }, [query, t])
 
   return (
     <div className={styles.root}>
@@ -21,6 +42,28 @@ export function Sidebar({ onNavigate }: SidebarProps) {
         </span>
       </NavLink>
 
+      <div className={styles.search}>
+        <Search size={15} className={styles.searchIcon} aria-hidden />
+        <input
+          type="search"
+          className={styles.searchInput}
+          value={query}
+          aria-label={t('nav.search')}
+          placeholder={t('nav.searchPlaceholder')}
+          onChange={(event) => setQuery(event.target.value)}
+        />
+        {query ? (
+          <button
+            type="button"
+            className={styles.searchClear}
+            aria-label={t('common.close')}
+            onClick={() => setQuery('')}
+          >
+            <X size={14} aria-hidden />
+          </button>
+        ) : null}
+      </div>
+
       <nav className={styles.nav} aria-label={t('meta.title')}>
         <NavLink
           to="/"
@@ -31,18 +74,25 @@ export function Sidebar({ onNavigate }: SidebarProps) {
           {t('common.home')}
         </NavLink>
 
-        {SECTIONS.map((section) => (
+        {groups.length === 0 ? (
+          <p className={styles.noResults}>{t('nav.noResults')}</p>
+        ) : null}
+
+        {groups.map((section) => (
           <div key={section.id} className={styles.group}>
             <p className={styles.groupTitle}>{t(`nav.${section.id}`)}</p>
             <ul className={styles.list}>
-              {section.topicIds.map((topicId) => (
-                <li key={topicId}>
+              {section.topics.map((topic) => (
+                <li key={topic.id}>
                   <NavLink
-                    to={`/${section.id}/${topicId}`}
-                    className={({ isActive }) => cx(styles.link, isActive && styles.active)}
+                    to={topic.href}
+                    className={({ isActive }) =>
+                      cx(styles.link, isActive && styles.active)
+                    }
                     onClick={onNavigate}
                   >
-                    {t(`topics.${topicId}`)}
+                    <span className={styles.linkTitle}>{topic.title}</span>
+                    <span className={styles.linkCount}>{topic.count}</span>
                   </NavLink>
                 </li>
               ))}

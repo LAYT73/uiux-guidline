@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { DemoStack } from '@/shared/ui/demo-kit'
 import { Button } from '@/shared/ui/button'
+import { Callout } from '@/shared/ui/callout'
+import { Spinner } from '@/shared/ui/spinner'
 import styles from '../playground.module.css'
 
 export function ImmediateGood() {
@@ -11,12 +13,22 @@ export function ImmediateGood() {
     <DemoStack>
       <Button
         disabled={phase === 'saving'}
+        aria-busy={phase === 'saving'}
         onClick={() => {
           setPhase('saving')
           window.setTimeout(() => setPhase('saved'), 800)
         }}
       >
-        {phase === 'saving' ? t('demo.saving') : phase === 'saved' ? t('demo.saved') : t('demo.save')}
+        {phase === 'saving' ? (
+          <span className={styles.inlineIcon}>
+            <Spinner size={14} />
+            {t('demo.saving')}
+          </span>
+        ) : phase === 'saved' ? (
+          t('demo.saved')
+        ) : (
+          t('demo.save')
+        )}
       </Button>
     </DemoStack>
   )
@@ -41,21 +53,32 @@ export function ImmediateBad() {
 
 export function SilentFailGood() {
   const { t } = useTranslation()
-  const [error, setError] = useState(false)
+  const [phase, setPhase] = useState<'idle' | 'saving' | 'failed'>('idle')
+
+  const send = () => {
+    setPhase('saving')
+    window.setTimeout(() => setPhase('failed'), 600)
+  }
+
   return (
     <DemoStack>
-      <Button
-        onClick={() => setError(true)}
-      >
-        {t('demo.saveToServer')}
+      <Button disabled={phase === 'saving'} aria-busy={phase === 'saving'} onClick={send}>
+        {phase === 'saving' ? (
+          <span className={styles.inlineIcon}>
+            <Spinner size={14} />
+            {t('demo.saving')}
+          </span>
+        ) : (
+          t('demo.saveToServer')
+        )}
       </Button>
-      {error ? (
-        <p className={styles.warn}>
-          {t('demo.requestFailed')}{' '}
-          <button type="button" className={styles.chip} onClick={() => setError(false)}>
+      {phase === 'failed' ? (
+        <Callout tone="dont" title={t('demo.error')}>
+          <p>{t('demo.requestFailed')}</p>
+          <Button variant="secondary" size="sm" onClick={send}>
             {t('demo.retry')}
-          </button>
-        </p>
+          </Button>
+        </Callout>
       ) : null}
     </DemoStack>
   )
@@ -67,12 +90,21 @@ export function SilentFailBad() {
   return (
     <DemoStack>
       <Button
+        disabled={busy}
+        aria-busy={busy}
         onClick={() => {
           setBusy(true)
           window.setTimeout(() => setBusy(false), 600)
         }}
       >
-        {busy ? t('demo.saving') : t('demo.saveToServer')}
+        {busy ? (
+          <span className={styles.inlineIcon}>
+            <Spinner size={14} />
+            {t('demo.saving')}
+          </span>
+        ) : (
+          t('demo.saveToServer')
+        )}
       </Button>
       <p className={styles.meta}>{t('demo.silentFail')}</p>
     </DemoStack>

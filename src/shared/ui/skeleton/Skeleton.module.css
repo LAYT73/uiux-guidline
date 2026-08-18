@@ -1,0 +1,53 @@
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: var(--space-3);
+  flex: none;
+  background: linear-gradient(
+    90deg,
+    var(--bg-muted) 0%,
+    var(--bg-hover) 50%,
+    var(--bg-muted) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1400ms var(--ease-in-out) infinite;
+}
+
+.last {
+  width: 62%;
+}
+
+.sm {
+  border-radius: var(--radius-sm);
+}
+
+.md {
+  border-radius: var(--radius-md);
+}
+
+.full {
+  border-radius: var(--radius-full);
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    animation: none;
+    background: var(--bg-muted);
+  }
+}

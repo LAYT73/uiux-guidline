@@ -42,24 +42,105 @@
   line-height: 1.35;
 }
 
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 var(--space-3) var(--space-3);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  color: var(--text-subtle);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  min-height: 36px;
+  padding: 0 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font-size: var(--text-sm);
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.searchInput::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+.searchInput::placeholder {
+  color: var(--text-subtle);
+}
+
+.searchInput:hover {
+  border-color: var(--border-strong);
+}
+
+.searchInput:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.searchClear {
+  position: absolute;
+  right: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-subtle);
+  cursor: pointer;
+}
+
+.searchClear:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
 .nav {
+  flex: 1;
   overflow: auto;
   padding: 0 var(--space-3) var(--space-6);
 }
 
 .home,
 .link {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   padding: 8px 10px;
   border-radius: var(--radius-sm);
   text-decoration: none;
   color: var(--text-muted);
   font-size: var(--text-sm);
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
 }
 
 .home {
   margin-bottom: var(--space-4);
   font-weight: 500;
+}
+
+.linkTitle {
+  min-width: 0;
+  flex: 1;
+}
+
+.linkCount {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-subtle);
 }
 
 .group {
@@ -69,7 +150,7 @@
 .groupTitle {
   padding: 0 10px var(--space-2);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-subtle);
@@ -88,7 +169,29 @@
 }
 
 .active {
+  position: relative;
   color: var(--accent);
   background: var(--accent-soft);
   font-weight: 600;
+}
+
+.active .linkCount {
+  color: var(--accent);
+}
+
+.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+}
+
+.noResults {
+  padding: var(--space-3) 10px;
+  font-size: var(--text-sm);
+  color: var(--text-subtle);
 }

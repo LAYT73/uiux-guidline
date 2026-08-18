@@ -64,7 +64,16 @@
   --overlay: rgba(5, 6, 8, 0.72);
   --focus: #e0b15c;
   --sidebar: #101218;
-  --glow: radial-gradient(900px 420px at 0% -10%, rgba(224, 177, 92, 0.09), transparent 55%);
+  --glow: radial-gradient(
+    900px 420px at 0% -10%,
+    rgba(224, 177, 92, 0.09),
+    transparent 55%
+  );
+  --stage-grid: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 0
+  );
 }
 
 :root[data-theme='light'] {
@@ -93,7 +102,16 @@
   --overlay: rgba(28, 25, 20, 0.46);
   --focus: #9a4e0a;
   --sidebar: #ebe6db;
-  --glow: radial-gradient(900px 420px at 0% -10%, rgba(154, 78, 10, 0.08), transparent 55%);
+  --glow: radial-gradient(
+    900px 420px at 0% -10%,
+    rgba(154, 78, 10, 0.08),
+    transparent 55%
+  );
+  --stage-grid: radial-gradient(
+    circle at 1px 1px,
+    rgba(40, 32, 18, 0.07) 1px,
+    transparent 0
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {

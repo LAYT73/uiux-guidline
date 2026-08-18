@@ -5,8 +5,16 @@ export const FOUNDATION_RULES: Rule[] = [
   { id: 'spacing.proximity', topicId: 'spacing', sectionId: 'foundations' },
   { id: 'spacing.padding-vs-gap', topicId: 'spacing', sectionId: 'foundations' },
   { id: 'border-radius.scale', topicId: 'border-radius', sectionId: 'foundations' },
-  { id: 'border-radius.proportional', topicId: 'border-radius', sectionId: 'foundations' },
-  { id: 'border-radius.pill-vs-form', topicId: 'border-radius', sectionId: 'foundations' },
+  {
+    id: 'border-radius.proportional',
+    topicId: 'border-radius',
+    sectionId: 'foundations',
+  },
+  {
+    id: 'border-radius.pill-vs-form',
+    topicId: 'border-radius',
+    sectionId: 'foundations',
+  },
   { id: 'typography.hierarchy', topicId: 'typography', sectionId: 'foundations' },
   { id: 'typography.measure', topicId: 'typography', sectionId: 'foundations' },
   { id: 'typography.line-height', topicId: 'typography', sectionId: 'foundations' },

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { DemoStack, FakeCard } from '@/shared/ui/demo-kit'
+import { DemoRow, DemoStack, FakeCard } from '@/shared/ui/demo-kit'
+import { Button } from '@/shared/ui/button'
+import { Tag } from '@/shared/ui/tag'
 import styles from '../../playground.module.css'
 
 export function ElevationGood() {
@@ -9,14 +11,20 @@ export function ElevationGood() {
 
   return (
     <DemoStack>
-      <button type="button" className={styles.chip} onClick={() => setLifted((v) => !v)}>
-        {lifted ? t('demo.restingCard') : t('demo.hoverCard')}
-      </button>
+      <DemoRow>
+        <Button variant="secondary" onClick={() => setLifted((v) => !v)}>
+          {lifted ? t('demo.dropCard') : t('demo.hoverCard')}
+        </Button>
+        <Tag tone={lifted ? 'accent' : 'neutral'}>
+          {lifted ? t('demo.liftedCard') : t('demo.restingCard')}
+        </Tag>
+      </DemoRow>
       <FakeCard
         style={{
           boxShadow: lifted ? 'var(--shadow-hover)' : 'var(--shadow-rest)',
           transform: lifted ? 'translateY(-2px)' : undefined,
-          transition: 'box-shadow var(--duration-med) var(--ease-out), transform var(--duration-med) var(--ease-out)',
+          transition:
+            'box-shadow var(--duration-med) var(--ease-out), transform var(--duration-med) var(--ease-out)',
         }}
       >
         {t('demo.project')}
@@ -29,15 +37,12 @@ export function ElevationBad() {
   const { t } = useTranslation()
   return (
     <DemoStack>
-      <FakeCard
-        style={{
-          boxShadow: '0 28px 60px rgba(0,0,0,.55)',
-          marginBottom: 12,
-        }}
-      >
+      <FakeCard style={{ boxShadow: 'var(--shadow-modal)' }}>
         {t('demo.firstRow')}
       </FakeCard>
-      <FakeCard style={{ boxShadow: '0 28px 60px rgba(0,0,0,.55)' }}>{t('demo.anotherListRow')}</FakeCard>
+      <FakeCard style={{ boxShadow: 'var(--shadow-modal)' }}>
+        {t('demo.anotherListRow')}
+      </FakeCard>
       <p className={styles.meta}>{t('demo.bothModal')}</p>
     </DemoStack>
   )

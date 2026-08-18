@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { DemoRow, DemoStack } from '@/shared/ui/demo-kit'
 import { Button } from '@/shared/ui/button'
+import { Kbd } from '@/shared/ui/kbd'
+import { Spinner } from '@/shared/ui/spinner'
 import styles from '../../playground.module.css'
 
 export function StatesGood() {
@@ -19,14 +21,24 @@ export function StatesGood() {
             window.setTimeout(() => setLoading(false), 1200)
           }}
         >
-          {loading ? t('demo.saving') : t('demo.save')}
+          {loading ? (
+            <span className={styles.inlineIcon}>
+              <Spinner size={14} />
+              {t('demo.saving')}
+            </span>
+          ) : (
+            t('demo.save')
+          )}
         </Button>
         <Button variant="secondary">{t('demo.focusMe')}</Button>
         <Button variant="ghost" disabled>
           {t('demo.disabledGuess')}
         </Button>
       </DemoRow>
-      <p className={styles.meta}>{t('demo.focusRingHint')}</p>
+      <DemoRow>
+        <Kbd>{t('demo.keyTab')}</Kbd>
+        <span className={styles.meta}>{t('demo.focusRingHint')}</span>
+      </DemoRow>
     </DemoStack>
   )
 }

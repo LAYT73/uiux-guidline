@@ -7,15 +7,17 @@ import styles from '../playground.module.css'
 export function ConsistentGood() {
   const { t } = useTranslation()
   const [air, setAir] = useState(false)
-  const pad = air ? 18 : 8
+  const pad = air ? 'var(--space-4)' : 'var(--space-2)'
 
   return (
     <DemoStack>
       <Switch checked={air} label={t('demo.comfortableDensity')} onChange={setAir} />
-      <FakeCard style={{ padding: pad, display: 'flex', flexDirection: 'column', gap: pad }}>
+      <FakeCard
+        style={{ padding: pad, display: 'flex', flexDirection: 'column', gap: pad }}
+      >
         <strong>{t('demo.inbox')}</strong>
-        <span>{t('demo.adaInvoice')}</span>
-        <span>{t('demo.graceReview')}</span>
+        <span className={styles.copy}>{t('demo.adaInvoice')}</span>
+        <span className={styles.copy}>{t('demo.graceReview')}</span>
       </FakeCard>
     </DemoStack>
   )
@@ -27,10 +29,12 @@ export function ConsistentBad() {
   return (
     <DemoStack>
       <FakeCard>
-        <p style={{ fontFamily: 'var(--font-serif)', fontSize: 22, marginBottom: 4 }}>{t('demo.inbox')}</p>
-        <p style={{ fontSize: 12, lineHeight: 1.1 }}>{t('demo.adaInvoice')}</p>
-        <p style={{ fontSize: 12, lineHeight: 1.1 }}>{t('demo.graceReview')}</p>
-        <div style={{ height: 48 }} />
+        <p className={styles.fakeTitle}>{t('demo.inbox')}</p>
+        <div className={styles.packed} style={{ marginTop: 'var(--space-1)' }}>
+          <span className={styles.meta}>{t('demo.adaInvoice')}</span>
+          <span className={styles.meta}>{t('demo.graceReview')}</span>
+        </div>
+        <div style={{ height: 'var(--space-7)' }} />
         <p className={styles.meta}>{t('demo.threeDensities')}</p>
       </FakeCard>
     </DemoStack>
@@ -44,7 +48,12 @@ export function ContextGood() {
   return (
     <DemoStack>
       <Switch checked={edit} label={t('demo.editMode')} onChange={setEdit} />
-      <FakeCard style={{ padding: edit ? 16 : 8, fontSize: edit ? 16 : 12 }}>
+      <FakeCard
+        style={{
+          padding: edit ? 'var(--space-4)' : 'var(--space-2)',
+          fontSize: edit ? 'var(--text-md)' : 'var(--text-xs)',
+        }}
+      >
         {edit ? t('demo.editCopy') : t('demo.browseCopy')}
       </FakeCard>
     </DemoStack>
@@ -56,7 +65,13 @@ export function ContextBad() {
 
   return (
     <DemoStack>
-      <FakeCard style={{ padding: 4, fontSize: 11, lineHeight: 1.2 }}>
+      <FakeCard
+        style={{
+          padding: 'var(--space-1)',
+          fontSize: 'var(--text-xs)',
+          lineHeight: 1.15,
+        }}
+      >
         {t('demo.onboardingDense')}
       </FakeCard>
       <p className={styles.meta}>{t('demo.spreadsheetDensity')}</p>

@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { DemoRange, DemoStack, FakeCard } from '@/shared/ui/demo-kit'
 import styles from '../../playground.module.css'
 
+const ROWS = ['firstRow', 'secondRow', 'thirdRow'] as const
+
 export function PaddingGapGood() {
   const { t } = useTranslation()
   const [pad, setPad] = useState(16)
@@ -15,6 +17,7 @@ export function PaddingGapGood() {
         name="pad-good"
         min={12}
         max={24}
+        step={4}
         value={pad}
         valueLabel={`${pad}px`}
         onChange={(event) => setPad(Number(event.target.value))}
@@ -23,15 +26,18 @@ export function PaddingGapGood() {
         label={t('demo.gap')}
         name="gap-good"
         min={8}
-        max={16}
+        max={12}
+        step={4}
         value={gap}
         valueLabel={`${gap}px`}
         onChange={(event) => setGap(Number(event.target.value))}
       />
       <FakeCard style={{ padding: pad, display: 'flex', flexDirection: 'column', gap }}>
-        <input className={styles.input} defaultValue={t('demo.firstRow')} />
-        <input className={styles.input} defaultValue={t('demo.secondRow')} />
-        <input className={styles.input} defaultValue={t('demo.thirdRow')} />
+        {ROWS.map((row) => (
+          <div key={row} className={styles.rowBox}>
+            {t(`demo.${row}`)}
+          </div>
+        ))}
       </FakeCard>
     </DemoStack>
   )
@@ -53,9 +59,11 @@ export function PaddingGapBad() {
         onChange={(event) => setMargin(Number(event.target.value))}
       />
       <FakeCard style={{ padding: 0 }}>
-        <input className={styles.input} defaultValue={t('demo.firstRow')} style={{ margin }} />
-        <input className={styles.input} defaultValue={t('demo.secondRow')} style={{ margin }} />
-        <input className={styles.input} defaultValue={t('demo.thirdRow')} style={{ margin }} />
+        {ROWS.map((row) => (
+          <div key={row} className={styles.rowBox} style={{ margin }}>
+            {t(`demo.${row}`)}
+          </div>
+        ))}
       </FakeCard>
     </DemoStack>
   )

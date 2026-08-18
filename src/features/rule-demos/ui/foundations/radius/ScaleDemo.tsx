@@ -38,7 +38,6 @@ export function RadiusScaleBad() {
   const { t } = useTranslation()
   return (
     <DemoStack>
-      <p className={styles.meta}>{t('demo.ownCorner')}</p>
       <DemoRow>
         <button type="button" className={styles.chip} style={{ borderRadius: 3 }}>
           {t('demo.save')}
@@ -48,6 +47,7 @@ export function RadiusScaleBad() {
         </button>
         <span className={styles.tile} style={{ borderRadius: 28 }} />
       </DemoRow>
+      <p className={styles.meta}>{t('demo.ownCorner')}</p>
     </DemoStack>
   )
 }

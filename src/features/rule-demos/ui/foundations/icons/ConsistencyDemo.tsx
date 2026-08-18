@@ -26,12 +26,16 @@ export function ConsistencyGood() {
             aria-pressed={selected === id}
             onClick={() => setSelected(id)}
           >
-            <Icon size={16} fill={selected === id ? 'currentColor' : 'none'} />
+            <Icon
+              size={16}
+              fill={selected === id ? 'currentColor' : 'none'}
+              aria-hidden
+            />
             {t(`demo.${labelKey}`)}
           </button>
         ))}
       </DemoRow>
-      <p className={styles.meta}>{t('demo.iconDifferent')}</p>
+      <p className={styles.meta}>{t('demo.oneIconFamily')}</p>
     </DemoStack>
   )
 }
@@ -58,6 +62,7 @@ export function ConsistencyBad() {
           {t('demo.profile')}
         </button>
       </DemoRow>
+      <p className={styles.meta}>{t('demo.mixedIconFamily')}</p>
     </DemoStack>
   )
 }

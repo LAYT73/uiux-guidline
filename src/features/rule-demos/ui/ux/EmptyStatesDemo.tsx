@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { DemoStack, FakeCard } from '@/shared/ui/demo-kit'
+import { DemoRow, DemoStack, FakeCard } from '@/shared/ui/demo-kit'
 import { Button } from '@/shared/ui/button'
+import { Callout } from '@/shared/ui/callout'
+import { Input } from '@/shared/ui/input'
 import styles from '../playground.module.css'
 
 export function ExplainActionGood() {
@@ -13,9 +15,11 @@ export function ExplainActionGood() {
         <p className={styles.ok}>{t('demo.projectCreated')}</p>
       ) : (
         <FakeCard>
-          <p>{t('demo.noProjects')}</p>
-          <div style={{ marginTop: 12 }}>
-            <Button onClick={() => setCreated(true)}>{t('demo.newProject')}</Button>
+          <div className={styles.mini}>
+            <p className={styles.copy}>{t('demo.noProjects')}</p>
+            <DemoRow>
+              <Button onClick={() => setCreated(true)}>{t('demo.newProject')}</Button>
+            </DemoRow>
           </div>
         </FakeCard>
       )}
@@ -37,16 +41,28 @@ export function ExplainActionBad() {
 export function DeadEndGood() {
   const { t } = useTranslation()
   const [query, setQuery] = useState(t('demo.zebraInvoices'))
+  const shown = query.length > 18 ? `${query.slice(0, 18)}…` : query
+
   return (
     <DemoStack>
-      <input className={styles.input} value={query} onChange={(e) => setQuery(e.target.value)} aria-label={t('demo.search')} />
+      <Input
+        label={t('demo.searchProjects')}
+        name="dead-end-search"
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+      />
       {query ? (
-        <>
-          <p className={styles.meta}>{t('demo.noMatches', { query })}</p>
-          <Button variant="secondary" onClick={() => setQuery('')}>
-            {t('demo.clearFilters')}
-          </Button>
-        </>
+        <Callout tone="info">
+          <p>{t('demo.noMatches', { query: shown })}</p>
+          <DemoRow>
+            <Button variant="secondary" size="sm" onClick={() => setQuery('')}>
+              {t('demo.clearFilters')}
+            </Button>
+            <Button variant="ghost" size="sm" onClick={() => setQuery('')}>
+              {t('demo.createAnyway', { query: shown })}
+            </Button>
+          </DemoRow>
+        </Callout>
       ) : (
         <p className={styles.ok}>{t('demo.showingAll')}</p>
       )}
@@ -58,7 +74,11 @@ export function DeadEndBad() {
   const { t } = useTranslation()
   return (
     <DemoStack>
-      <input className={styles.input} defaultValue={t('demo.zebraInvoices')} aria-label={t('demo.search')} />
+      <input
+        className={styles.input}
+        defaultValue={t('demo.zebraInvoices')}
+        aria-label={t('demo.search')}
+      />
       <p className={styles.meta}>{t('demo.noData')}</p>
     </DemoStack>
   )

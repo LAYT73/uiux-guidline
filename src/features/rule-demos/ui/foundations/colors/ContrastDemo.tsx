@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { DemoRange, DemoStack } from '@/shared/ui/demo-kit'
+import { DemoRange, DemoRow, DemoStack } from '@/shared/ui/demo-kit'
+import { Tag } from '@/shared/ui/tag'
 import styles from '../../playground.module.css'
 
 function hexToRgb(hex: string) {
@@ -59,8 +60,13 @@ export function ContrastGood() {
         valueLabel={grey(fg)}
         onChange={(event) => setFg(Number(event.target.value))}
       />
-      <p className={styles.ok}>{ratio.toFixed(2)} : 1</p>
-      <p style={{ background, color, padding: 12, borderRadius: 8 }}>{t('demo.contrastGood')}</p>
+      <DemoRow>
+        <Tag tone="accent">{ratio.toFixed(2)} : 1</Tag>
+        <span className={styles.ok}>{t('demo.passesAa')}</span>
+      </DemoRow>
+      <p className={styles.swatch} style={{ background, color }}>
+        {t('demo.contrastGood')}
+      </p>
     </DemoStack>
   )
 }
@@ -93,8 +99,13 @@ export function ContrastBad() {
         valueLabel={grey(fg)}
         onChange={(event) => setFg(Number(event.target.value))}
       />
-      <p className={styles.warn}>{ratio.toFixed(2)} : 1</p>
-      <p style={{ background, color, padding: 12, borderRadius: 8 }}>{t('demo.contrastBad')}</p>
+      <DemoRow>
+        <Tag>{ratio.toFixed(2)} : 1</Tag>
+        <span className={styles.warn}>{t('demo.failsAa')}</span>
+      </DemoRow>
+      <p className={styles.swatch} style={{ background, color }}>
+        {t('demo.contrastBad')}
+      </p>
     </DemoStack>
   )
 }

@@ -1,0 +1,39 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  color: currentColor;
+}
+
+.ring {
+  width: 100%;
+  height: 100%;
+  border-style: solid;
+  border-color: currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+}
+
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring {
+    animation: none;
+    border-top-color: currentColor;
+    opacity: 0.4;
+  }
+}
