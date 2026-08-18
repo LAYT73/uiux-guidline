@@ -333,6 +333,202 @@
         "goodHint": "This demo exposes a named nav. Jump tools can find it.",
         "badHint": "Links in a div soup. No list, no name, no current."
       }
+    },
+    "layout": {
+      "max-width": {
+        "title": "Give the page a measure",
+        "description": "Full-bleed everything is not generous — it is exhausting. A max-width on reading and forms keeps the eye from travelling. Full-bleed is for media and atmospheres, not for every paragraph.",
+        "goodHint": "Stretch the column. Type stays in a readable measure.",
+        "badHint": "The text follows the window. On a wide screen it becomes a horizon."
+      },
+      "visual-order": {
+        "title": "Visual order should match DOM order",
+        "description": "CSS order and absolute placement can put the primary action first visually and last in the tab sequence. Keyboard users walk a different page. Layout with source, not with tricks.",
+        "goodHint": "Tab through. The path matches what you see.",
+        "badHint": "The button is on the left but last in the DOM. Tab jumps strangely."
+      }
+    },
+    "hierarchy": {
+      "one-h1": {
+        "title": "One H1 per page",
+        "description": "The H1 is the document's name. Multiple H1s, or a pretty div pretending to be a title, break outlines and SEO and the mental model of 'where am I'. Style can be loud; the outline stays strict.",
+        "goodHint": "A single page title. Subheads are H2.",
+        "badHint": "Three H1s. The outline is a pile of shouts."
+      },
+      "not-all-bold": {
+        "title": "If everything is bold, nothing is",
+        "description": "Weight is a scarce resource. Bold the one thing that must be found in a skim. A page of 600-weight body text is a flat wall.",
+        "goodHint": "Only the title and the key number are heavy.",
+        "badHint": "Every line is semibold. Hierarchy collapsed."
+      }
+    },
+    "density": {
+      "consistent": {
+        "title": "Do not mix densities in one region",
+        "description": "A marketing hero next to a spreadsheet in the same card is two products fighting. Keep a region at one density; change density across regions on purpose, with a seam.",
+        "goodHint": "One block, one density. Toggle it as a whole.",
+        "badHint": "Airy title, cramped list, a huge empty footer. Three products."
+      },
+      "context": {
+        "title": "Density follows the job",
+        "description": "Dashboards can be compact. Onboarding cannot. Copying a data-dense table into a first-run screen is cruelty. Match density to risk and familiarity.",
+        "goodHint": "Same data, two jobs: browse vs edit. The spacing changes with the job.",
+        "badHint": "Onboarding squeezed like a Bloomberg terminal."
+      }
+    },
+    "alignment": {
+      "grid": {
+        "title": "Align to a grid, not by eye",
+        "description": "A 4px or 8px grid is cheaper than optical guessing. Ragged left edges and mixed inset values look like a draft. Snap, then break the grid only for optical exceptions (icons, quotes).",
+        "goodHint": "Cards share a left edge. Shift the gutter and they stay a family.",
+        "badHint": "Each block has its own indent. The column wobbles."
+      },
+      "long-text": {
+        "title": "Do not center long text",
+        "description": "Centered headlines can work. Centered paragraphs force the eye to find a new start every line. Left-align body; center only short, ceremonial lines.",
+        "goodHint": "The paragraph is left-aligned. Easy returns.",
+        "badHint": "A centered wall of text. Every line is a new hunt."
+      }
+    },
+    "grouping": {
+      "proximity": {
+        "title": "Group by closeness, not by boxes",
+        "description": "A border around everything is not grouping — it is noise. Related actions share a small gap; unrelated ones get a larger one. Boxes are a last resort.",
+        "goodHint": "Save and Cancel sit together. Delete is further away.",
+        "badHint": "Every control is equally spaced. No family, no exile."
+      },
+      "cards": {
+        "title": "A card groups one idea",
+        "description": "If two ideas share a card, the border lied. Split or use inner hierarchy. Cards are chunks of meaning, not a skin for the whole page.",
+        "goodHint": "Two cards, two ideas. Easy to scan.",
+        "badHint": "Profile, billing, and danger zone in one rectangle."
+      }
+    },
+    "whitespace": {
+      "cta": {
+        "title": "Let the call to action breathe",
+        "description": "A primary button jammed against a paragraph is easy to miss and easy to mis-tap. Space around a CTA is a frame. It is not 'empty'.",
+        "goodHint": "Increase the air around Publish. It becomes the destination.",
+        "badHint": "The button is glued to the copy. It looks like a footnote."
+      },
+      "breathing": {
+        "title": "Empty pixels carry structure",
+        "description": "Filling every gap with a widget is anxiety, not utility. Whitespace separates chapters. If the page has no rest, the user cannot decide where to look.",
+        "goodHint": "Add space between sections. The page gains chapters.",
+        "badHint": "Widgets packed edge to edge. No place to land."
+      }
+    },
+    "responsive": {
+      "critical-actions": {
+        "title": "Do not hide the job on small screens",
+        "description": "If Publish is in a hover-only toolbar, mobile users cannot finish. Collapse chrome, not the task. Primary actions stay reachable — often at the bottom, in a thumb zone.",
+        "goodHint": "Shrink the frame. Publish is still there.",
+        "badHint": "The action lives in a hover menu. Touch has no hover."
+      },
+      "touch": {
+        "title": "Hit targets are at least 44px",
+        "description": "Fingers are not cursors. 24px icons with 0 padding are a dexterity test. Padding can make a small glyph a large target without looking childish.",
+        "goodHint": "The control is 44px tall. Easy to hit.",
+        "badHint": "A 22px hit area. Misses become rage clicks."
+      }
+    },
+    "layout": {
+      "max-width": {
+        "title": "Give the page a measure",
+        "description": "Full-bleed everything is not generous — it is exhausting. A max-width on reading and forms keeps the eye from travelling. Full-bleed is for media and atmospheres, not for every paragraph.",
+        "goodHint": "Stretch the column. Type stays in a readable measure.",
+        "badHint": "The text follows the window. On a wide screen it becomes a horizon."
+      },
+      "visual-order": {
+        "title": "Visual order should match DOM order",
+        "description": "CSS order and absolute placement can put the primary action first visually and last in the tab sequence. Keyboard users walk a different page. Layout with source, not with tricks.",
+        "goodHint": "Tab through. The path matches what you see.",
+        "badHint": "The button is on the left but last in the DOM. Tab jumps strangely."
+      }
+    },
+    "hierarchy": {
+      "one-h1": {
+        "title": "One H1 per page",
+        "description": "The H1 is the document's name. Multiple H1s, or a pretty div pretending to be a title, break outlines and SEO and the mental model of 'where am I'. Style can be loud; the outline stays strict.",
+        "goodHint": "A single page title. Subheads are H2.",
+        "badHint": "Three H1s. The outline is a pile of shouts."
+      },
+      "not-all-bold": {
+        "title": "If everything is bold, nothing is",
+        "description": "Weight is a scarce resource. Bold the one thing that must be found in a skim. A page of 600-weight body text is a flat wall.",
+        "goodHint": "Only the title and the key number are heavy.",
+        "badHint": "Every line is semibold. Hierarchy collapsed."
+      }
+    },
+    "density": {
+      "consistent": {
+        "title": "Do not mix densities in one region",
+        "description": "A marketing hero next to a spreadsheet in the same card is two products fighting. Keep a region at one density; change density across regions on purpose, with a seam.",
+        "goodHint": "One block, one density. Toggle it as a whole.",
+        "badHint": "Airy title, cramped list, a huge empty footer. Three products."
+      },
+      "context": {
+        "title": "Density follows the job",
+        "description": "Dashboards can be compact. Onboarding cannot. Copying a data-dense table into a first-run screen is cruelty. Match density to risk and familiarity.",
+        "goodHint": "Same data, two jobs: browse vs edit. The spacing changes with the job.",
+        "badHint": "Onboarding squeezed like a Bloomberg terminal."
+      }
+    },
+    "alignment": {
+      "grid": {
+        "title": "Align to a grid, not by eye",
+        "description": "A 4px or 8px grid is cheaper than optical guessing. Ragged left edges and mixed inset values look like a draft. Snap, then break the grid only for optical exceptions (icons, quotes).",
+        "goodHint": "Cards share a left edge. Shift the gutter and they stay a family.",
+        "badHint": "Each block has its own indent. The column wobbles."
+      },
+      "long-text": {
+        "title": "Do not center long text",
+        "description": "Centered headlines can work. Centered paragraphs force the eye to find a new start every line. Left-align body; center only short, ceremonial lines.",
+        "goodHint": "The paragraph is left-aligned. Easy returns.",
+        "badHint": "A centered wall of text. Every line is a new hunt."
+      }
+    },
+    "grouping": {
+      "proximity": {
+        "title": "Group by closeness, not by boxes",
+        "description": "A border around everything is not grouping — it is noise. Related actions share a small gap; unrelated ones get a larger one. Boxes are a last resort.",
+        "goodHint": "Save and Cancel sit together. Delete is further away.",
+        "badHint": "Every control is equally spaced. No family, no exile."
+      },
+      "cards": {
+        "title": "A card groups one idea",
+        "description": "If two ideas share a card, the border lied. Split or use inner hierarchy. Cards are chunks of meaning, not a skin for the whole page.",
+        "goodHint": "Two cards, two ideas. Easy to scan.",
+        "badHint": "Profile, billing, and danger zone in one rectangle."
+      }
+    },
+    "whitespace": {
+      "cta": {
+        "title": "Let the call to action breathe",
+        "description": "A primary button jammed against a paragraph is easy to miss and easy to mis-tap. Space around a CTA is a frame. It is not 'empty'.",
+        "goodHint": "Increase the air around Publish. It becomes the destination.",
+        "badHint": "The button is glued to the copy. It looks like a footnote."
+      },
+      "breathing": {
+        "title": "Empty pixels carry structure",
+        "description": "Filling every gap with a widget is anxiety, not utility. Whitespace separates chapters. If the page has no rest, the user cannot decide where to look.",
+        "goodHint": "Add space between sections. The page gains chapters.",
+        "badHint": "Widgets packed edge to edge. No place to land."
+      }
+    },
+    "responsive": {
+      "critical-actions": {
+        "title": "Do not hide the job on small screens",
+        "description": "If Publish is in a hover-only toolbar, mobile users cannot finish. Collapse chrome, not the task. Primary actions stay reachable — often at the bottom, in a thumb zone.",
+        "goodHint": "Shrink the frame. Publish is still there.",
+        "badHint": "The action lives in a hover menu. Touch has no hover."
+      },
+      "touch": {
+        "title": "Hit targets are at least 44px",
+        "description": "Fingers are not cursors. 24px icons with 0 padding are a dexterity test. Padding can make a small glyph a large target without looking childish.",
+        "goodHint": "The control is 44px tall. Easy to hit.",
+        "badHint": "A 22px hit area. Misses become rage clicks."
+      }
     }
   }
 }

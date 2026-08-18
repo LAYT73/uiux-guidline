@@ -4,6 +4,7 @@ import { messagesEn, messagesRu } from '@/shared/config'
 import { getDemos } from './registry'
 import '../ui/foundations/register'
 import '../ui/components/register'
+import '../ui/composition/register'
 
 function pick(root: unknown, id: string) {
   return id.split('.').reduce<unknown>((node, part) => {
