@@ -1,9 +1,12 @@
 import type { ComponentType } from 'react'
 import type { Rule } from '@/entities/guideline'
 
+export type RuleDemoLayout = 'split' | 'stacked'
+
 export type RuleDemoPair = {
   Good: ComponentType
   Bad: ComponentType
+  layout?: RuleDemoLayout
 }
 
 const registry = new Map<string, RuleDemoPair>()

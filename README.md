@@ -32,7 +32,9 @@ Four layers, 27 topics, 64 interactive rules:
 3. **Composition** — layout, hierarchy, density, alignment, grouping, whitespace, responsive
 4. **UX principles** — feedback, affordance, error prevention, loading, empty states, accessibility
 
-Every Don't example is still usable. The point is to *feel* the mistake.
+Every Don't example is still usable. The point is to _feel_ the mistake.
+
+Each rule ships with a reset, a keyboard path, and hints that say what to look at. Sliders inside a Do example are constrained so the correct answer stays correct.
 
 ## Architecture
 

@@ -1,6 +1,12 @@
 .root {
   display: flex;
   flex-direction: column;
+  gap: var(--space-6);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-4);
 }
 
@@ -16,9 +22,9 @@
   font-family: var(--font-serif);
   font-size: clamp(2.1rem, 5vw, 3.4rem);
   font-weight: 500;
-  line-height: 1.12;
+  line-height: 1.08;
   letter-spacing: -0.03em;
-  max-width: 16ch;
+  max-width: 18ch;
 }
 
 .lead {
@@ -34,22 +40,124 @@
   gap: var(--space-2);
   width: fit-content;
   margin-top: var(--space-2);
-  margin-bottom: var(--space-5);
-  min-height: 44px;
-  padding: 0 var(--space-4);
+  min-height: 46px;
+  padding: 0 var(--space-5);
   border-radius: var(--radius-md);
   background: var(--accent);
   color: var(--accent-contrast);
   text-decoration: none;
+  font-weight: 550;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.cta:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.cta:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  margin: var(--space-4) 0 0;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+
+.statValue {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.statLabel {
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.how {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-stage);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.howTitle {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
   font-weight: 500;
+}
+
+.howLead {
+  max-width: var(--measure);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--text);
+}
+
+.stepIndex {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
 .sectionTitle {
   font-size: var(--text-sm);
+  font-weight: 650;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-subtle);
-  margin-top: var(--space-3);
 }
 
 .grid {
@@ -58,31 +166,50 @@
   gap: var(--space-4);
 }
 
-.cta:hover {
-  background: var(--accent-hover);
-}
-
-.cta:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 3px;
-}
-
 .card {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  min-height: 100%;
+  height: 100%;
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .cardTitle {
   font-family: var(--font-serif);
   font-size: var(--text-xl);
   font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.cardCount {
+  margin-left: auto;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-subtle);
+  white-space: nowrap;
 }
 
 .cardLead {
   color: var(--text-muted);
   font-size: var(--text-sm);
+  line-height: var(--leading-body);
 }
 
 .topics {
@@ -90,7 +217,7 @@
   flex-wrap: wrap;
   gap: var(--space-2);
   list-style: none;
-  margin: 0;
+  margin: var(--space-2) 0 0;
   padding: 0;
   margin-top: auto;
 }
@@ -120,5 +247,9 @@
 @media (max-width: 760px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .stats {
+    gap: var(--space-5);
   }
 }

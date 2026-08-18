@@ -1,4 +1,7 @@
 .root {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -7,15 +10,32 @@
   border-bottom: 1px solid var(--border);
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(12px);
-  position: sticky;
-  top: 0;
-  z-index: 10;
 }
 
-.title {
-  flex: 1;
+.crumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.crumb {
   font-size: var(--text-sm);
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.crumbMuted {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.crumbIcon {
+  flex-shrink: 0;
+  color: var(--text-subtle);
 }
 
 .actions {
@@ -28,8 +48,23 @@
   display: none;
 }
 
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  transform-origin: 0 50%;
+  background: var(--accent);
+}
+
 @media (max-width: 960px) {
   .menu {
     display: inline-flex;
+  }
+
+  .crumbMuted,
+  .crumbIcon {
+    display: none;
   }
 }

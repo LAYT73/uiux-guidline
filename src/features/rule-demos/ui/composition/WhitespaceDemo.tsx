@@ -15,11 +15,12 @@ export function CtaGood() {
         name="cta-good"
         min={16}
         max={32}
+        step={8}
         value={space}
         valueLabel={`${space}px`}
         onChange={(e) => setSpace(Number(e.target.value))}
       />
-      <p className={styles.meta}>{t('demo.readyToShip')}</p>
+      <p className={styles.copy}>{t('demo.readyToShip')}</p>
       <div style={{ marginTop: space, marginBottom: space }}>
         <Button>{t('demo.publish')}</Button>
       </div>
@@ -32,17 +33,17 @@ export function CtaBad() {
 
   return (
     <DemoStack>
-      <p className={styles.meta} style={{ marginBottom: 4 }}>
-        {t('demo.readyToShip')}
-      </p>
-      <Button>{t('demo.publish')}</Button>
+      <div className={styles.tight}>
+        <p className={styles.copy}>{t('demo.readyToShip')}</p>
+        <Button>{t('demo.publish')}</Button>
+      </div>
     </DemoStack>
   )
 }
 
 export function BreathingGood() {
   const { t } = useTranslation()
-  const [space, setSpace] = useState(20)
+  const [space, setSpace] = useState(24)
 
   return (
     <DemoStack>
@@ -51,6 +52,7 @@ export function BreathingGood() {
         name="air-good"
         min={16}
         max={32}
+        step={8}
         value={space}
         valueLabel={`${space}px`}
         onChange={(e) => setSpace(Number(e.target.value))}
@@ -67,9 +69,11 @@ export function BreathingBad() {
 
   return (
     <DemoStack>
-      <FakeCard style={{ margin: 0 }}>{t('demo.intro')}</FakeCard>
-      <FakeCard style={{ margin: 0, borderRadius: 0 }}>{t('demo.details')}</FakeCard>
-      <FakeCard style={{ margin: 0 }}>{t('demo.footerWidgets')}</FakeCard>
+      <div className={styles.packed}>
+        <FakeCard style={{ borderRadius: 0 }}>{t('demo.intro')}</FakeCard>
+        <FakeCard style={{ borderRadius: 0 }}>{t('demo.details')}</FakeCard>
+        <FakeCard style={{ borderRadius: 0 }}>{t('demo.footerWidgets')}</FakeCard>
+      </div>
     </DemoStack>
   )
 }

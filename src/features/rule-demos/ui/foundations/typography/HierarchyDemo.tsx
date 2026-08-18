@@ -18,16 +18,12 @@ export function HierarchyGood() {
         valueLabel={`${display}px`}
         onChange={(event) => setDisplay(Number(event.target.value))}
       />
-      <div>
-        <p style={{ fontFamily: 'var(--font-serif)', fontSize: display, lineHeight: 1.15 }}>
+      <div className={styles.mini}>
+        <p className={styles.demoH1} style={{ fontSize: display }}>
           {t('demo.invoice')}
         </p>
-        <p className={styles.meta} style={{ marginTop: 6 }}>
-          {t('demo.invoiceDue')}
-        </p>
-        <p style={{ marginTop: 10, fontSize: 14, lineHeight: 1.5 }}>
-          {t('demo.invoiceBody')}
-        </p>
+        <p className={styles.meta}>{t('demo.invoiceDue')}</p>
+        <p className={styles.copy}>{t('demo.invoiceBody')}</p>
       </div>
     </DemoStack>
   )
@@ -48,7 +44,7 @@ export function HierarchyBad() {
         valueLabel={`${size}px`}
         onChange={(event) => setSize(Number(event.target.value))}
       />
-      <div style={{ fontSize: size, fontWeight: 500, lineHeight: 1.4 }}>
+      <div className={styles.tight} style={{ fontSize: size, fontWeight: 500 }}>
         <p>{t('demo.invoice')}</p>
         <p>{t('demo.invoiceDue')}</p>
         <p>{t('demo.invoiceBody')}</p>

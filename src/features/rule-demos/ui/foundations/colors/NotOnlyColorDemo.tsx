@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { CircleAlert } from 'lucide-react'
+import { Check, CircleAlert } from 'lucide-react'
 import { DemoStack } from '@/shared/ui/demo-kit'
+import { Badge } from '@/shared/ui/badge'
 import { Button } from '@/shared/ui/button'
 import { Input } from '@/shared/ui/input'
 import styles from '../../playground.module.css'
@@ -21,12 +22,15 @@ export function NotOnlyColorGood() {
         error={invalid ? t('demo.enterEmail') : undefined}
       />
       {invalid ? (
-        <p className={styles.warn} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <CircleAlert size={16} aria-hidden />
+        <Badge tone="dont">
+          <CircleAlert size={12} aria-hidden />
           {t('demo.errorWithIcon')}
-        </p>
+        </Badge>
       ) : (
-        <p className={styles.ok}>{t('demo.saved')}</p>
+        <Badge tone="do">
+          <Check size={12} aria-hidden />
+          {t('demo.saved')}
+        </Badge>
       )}
     </DemoStack>
   )
@@ -34,18 +38,24 @@ export function NotOnlyColorGood() {
 
 export function NotOnlyColorBad() {
   const { t } = useTranslation()
+  const fieldId = useId()
   const [value, setValue] = useState('ada')
   const invalid = !value.includes('@')
 
   return (
     <DemoStack>
-      <input
-        aria-label={t('demo.email')}
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
-        className={styles.input}
-        style={{ borderColor: invalid ? '#e11' : undefined }}
-      />
+      <div className={styles.field}>
+        <label className={styles.label} htmlFor={fieldId}>
+          {t('demo.email')}
+        </label>
+        <input
+          id={fieldId}
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+          className={styles.input}
+          style={{ borderColor: invalid ? 'var(--dont)' : undefined }}
+        />
+      </div>
       <Button disabled={invalid}>{t('demo.continue')}</Button>
       <p className={styles.meta}>{t('demo.errorColorOnly')}</p>
     </DemoStack>

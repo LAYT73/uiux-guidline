@@ -1,45 +1,63 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { DemoRange, DemoRow, DemoStack } from '@/shared/ui/demo-kit'
+import { DemoFocus, DemoRange, DemoRow, DemoStack } from '@/shared/ui/demo-kit'
 import { Button } from '@/shared/ui/button'
+import { Code } from '@/shared/ui/code'
+import { Kbd } from '@/shared/ui/kbd'
 import styles from '../playground.module.css'
+
+const ORDER_GOOD_MARKUP = `<div class="row">
+  <button>Back</button>
+  <button>Continue</button>
+</div>`
+
+const ORDER_BAD_MARKUP = `<div class="row">
+  <button>Continue</button>
+  <button>Back</button>
+</div>
+
+.row { flex-direction: row-reverse; }`
 
 export function MaxWidthGood() {
   const { t } = useTranslation()
-  const [width, setWidth] = useState(280)
+  const [measure, setMeasure] = useState(56)
 
   return (
     <DemoStack>
       <DemoRange
         label={t('demo.column')}
         name="mw-good"
-        min={240}
-        max={320}
-        value={width}
-        valueLabel={`${width}px`}
-        onChange={(e) => setWidth(Number(e.target.value))}
+        min={40}
+        max={62}
+        value={measure}
+        valueLabel={`${measure}ch`}
+        onChange={(e) => setMeasure(Number(e.target.value))}
       />
-      <div style={{ width, fontSize: 14, lineHeight: 1.5 }}>{t('demo.measureCopy')}</div>
+      <p className={styles.copy} style={{ width: `min(100%, ${measure}ch)` }}>
+        {t('demo.measureCopy')}
+      </p>
     </DemoStack>
   )
 }
 
 export function MaxWidthBad() {
   const { t } = useTranslation()
-  const [width, setWidth] = useState(380)
+  const [measure, setMeasure] = useState(28)
 
   return (
     <DemoStack>
       <DemoRange
         label={t('demo.column')}
         name="mw-bad"
-        min={320}
-        max={480}
-        value={width}
-        valueLabel={`${width}px`}
-        onChange={(e) => setWidth(Number(e.target.value))}
+        min={20}
+        max={40}
+        value={measure}
+        valueLabel={`${measure}ch`}
+        onChange={(e) => setMeasure(Number(e.target.value))}
       />
-      <p style={{ width, fontSize: 14, lineHeight: 1.5 }}>{t('demo.fullBleedCopy')}</p>
+      <p className={styles.copy} style={{ width: '100%', minWidth: `${measure}ch` }}>
+        {t('demo.fullBleedCopy')}
+      </p>
     </DemoStack>
   )
 }
@@ -49,11 +67,23 @@ export function VisualOrderGood() {
 
   return (
     <DemoStack>
-      <p className={styles.meta}>{t('demo.tabVisualOrder')}</p>
       <DemoRow>
-        <Button variant="secondary">{t('demo.back')}</Button>
-        <Button>{t('demo.continue')}</Button>
+        <Kbd>{t('demo.keyTab')}</Kbd>
+        <span className={styles.meta}>{t('demo.tabVisualOrder')}</span>
       </DemoRow>
+      <DemoFocus
+        label={t('demo.focusNow')}
+        startLabel={t('demo.tabFromHere')}
+        emptyLabel={t('demo.focusOutside')}
+      >
+        <DemoRow>
+          <Button variant="secondary">{t('demo.back')}</Button>
+          <Button>{t('demo.continue')}</Button>
+        </DemoRow>
+      </DemoFocus>
+      <Code label={t('demo.markup')} tone="do">
+        {ORDER_GOOD_MARKUP}
+      </Code>
     </DemoStack>
   )
 }
@@ -63,11 +93,30 @@ export function VisualOrderBad() {
 
   return (
     <DemoStack>
-      <p className={styles.meta}>{t('demo.continueFirst')}</p>
-      <div style={{ display: 'flex', flexDirection: 'row-reverse', gap: 8, justifyContent: 'flex-end' }}>
-        <Button>{t('demo.continue')}</Button>
-        <Button variant="secondary">{t('demo.back')}</Button>
-      </div>
+      <DemoRow>
+        <Kbd>{t('demo.keyTab')}</Kbd>
+        <span className={styles.meta}>{t('demo.continueFirst')}</span>
+      </DemoRow>
+      <DemoFocus
+        label={t('demo.focusNow')}
+        startLabel={t('demo.tabFromHere')}
+        emptyLabel={t('demo.focusOutside')}
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row-reverse',
+            gap: 'var(--space-2)',
+            justifyContent: 'flex-end',
+          }}
+        >
+          <Button>{t('demo.continue')}</Button>
+          <Button variant="secondary">{t('demo.back')}</Button>
+        </div>
+      </DemoFocus>
+      <Code label={t('demo.markup')} tone="dont">
+        {ORDER_BAD_MARKUP}
+      </Code>
     </DemoStack>
   )
 }

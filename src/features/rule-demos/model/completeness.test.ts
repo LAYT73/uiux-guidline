@@ -21,18 +21,22 @@ describe('rule completeness', () => {
     expect(RULES.length).toBeGreaterThan(0)
 
     for (const rule of RULES) {
-      const enCopy = pick(messagesEn.rules, rule.id) as {
-        title?: string
-        description?: string
-        goodHint?: string
-        badHint?: string
-      } | undefined
-      const ruCopy = pick(messagesRu.rules, rule.id) as {
-        title?: string
-        description?: string
-        goodHint?: string
-        badHint?: string
-      } | undefined
+      const enCopy = pick(messagesEn.rules, rule.id) as
+        | {
+            title?: string
+            description?: string
+            goodHint?: string
+            badHint?: string
+          }
+        | undefined
+      const ruCopy = pick(messagesRu.rules, rule.id) as
+        | {
+            title?: string
+            description?: string
+            goodHint?: string
+            badHint?: string
+          }
+        | undefined
       expect(enCopy?.title, rule.id).toBeTruthy()
       expect(enCopy?.description, rule.id).toBeTruthy()
       expect(enCopy?.goodHint, `${rule.id} goodHint`).toBeTruthy()

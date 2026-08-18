@@ -28,7 +28,7 @@ registerDemos({
   'border-radius.proportional': { Good: ProportionalGood, Bad: ProportionalBad },
   'border-radius.pill-vs-form': { Good: PillFormGood, Bad: PillFormBad },
   'typography.hierarchy': { Good: HierarchyGood, Bad: HierarchyBad },
-  'typography.measure': { Good: MeasureGood, Bad: MeasureBad },
+  'typography.measure': { Good: MeasureGood, Bad: MeasureBad, layout: 'stacked' },
   'typography.line-height': { Good: LineHeightGood, Bad: LineHeightBad },
   'colors.tokens': { Good: TokensGood, Bad: TokensBad },
   'colors.contrast': { Good: ContrastGood, Bad: ContrastBad },

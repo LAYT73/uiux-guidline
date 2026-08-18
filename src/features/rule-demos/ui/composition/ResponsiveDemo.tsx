@@ -4,6 +4,7 @@ import { MoreHorizontal } from 'lucide-react'
 import { DemoRange, DemoStack } from '@/shared/ui/demo-kit'
 import { Button } from '@/shared/ui/button'
 import { IconButton } from '@/shared/ui/icon-button'
+import { Tag } from '@/shared/ui/tag'
 import styles from '../playground.module.css'
 
 export function CriticalActionsGood() {
@@ -21,9 +22,9 @@ export function CriticalActionsGood() {
         valueLabel={`${width}px`}
         onChange={(e) => setWidth(Number(e.target.value))}
       />
-      <div style={{ width, border: '1px dashed var(--border)', padding: 12, borderRadius: 12 }}>
+      <div className={styles.frame} style={{ width }}>
         <p className={styles.meta}>{t('demo.editorChrome')}</p>
-        <div style={{ marginTop: 12 }}>
+        <div className={styles.frameSlot}>
           <Button>{t('demo.publish')}</Button>
         </div>
       </div>
@@ -38,12 +39,18 @@ export function CriticalActionsBad() {
   return (
     <DemoStack>
       <div
+        className={styles.frame}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        style={{ border: '1px dashed var(--border)', padding: 8, borderRadius: 12 }}
       >
-        <span className={styles.meta}>{t('demo.hoverChrome')}</span>
-        {hover ? <Button>{t('demo.publish')}</Button> : <span className={styles.chip}>···</span>}
+        <p className={styles.meta}>{t('demo.editorChrome')}</p>
+        <div className={styles.frameSlot}>
+          {hover ? (
+            <Button>{t('demo.publish')}</Button>
+          ) : (
+            <Tag>{t('demo.hoverChrome')}</Tag>
+          )}
+        </div>
       </div>
     </DemoStack>
   )
@@ -55,8 +62,12 @@ export function TouchGood() {
 
   return (
     <DemoStack>
-      <IconButton label={t('demo.more')} onClick={() => setHits((n) => n + 1)}>
-        <MoreHorizontal size={18} />
+      <IconButton
+        label={t('demo.more')}
+        className={styles.touchTarget}
+        onClick={() => setHits((n) => n + 1)}
+      >
+        <MoreHorizontal size={18} aria-hidden />
       </IconButton>
       <p className={styles.meta}>{t('demo.hits', { n: hits })}</p>
     </DemoStack>
@@ -72,17 +83,10 @@ export function TouchBad() {
       <button
         type="button"
         aria-label={t('demo.more')}
+        className={styles.tinyTarget}
         onClick={() => setHits((n) => n + 1)}
-        style={{
-          width: 22,
-          height: 22,
-          padding: 0,
-          border: '1px solid var(--border)',
-          background: 'var(--bg-elevated)',
-          color: 'inherit',
-        }}
       >
-        <MoreHorizontal size={12} />
+        <MoreHorizontal size={12} aria-hidden />
       </button>
       <p className={styles.meta}>{t('demo.hits', { n: hits })}</p>
     </DemoStack>

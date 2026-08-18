@@ -9,11 +9,11 @@ export function TokensGood() {
     <DemoStack>
       <p className={styles.meta}>{t('demo.tokenCard')}</p>
       <FakeCard>
-        <p style={{ fontFamily: 'var(--font-serif)', fontSize: 18, marginBottom: 8 }}>{t('demo.product')}</p>
-        <p className={styles.meta} style={{ marginBottom: 12 }}>
-          {t('demo.invoiceDue')}
-        </p>
-        <Button>{t('demo.submit')}</Button>
+        <div className={styles.mini}>
+          <p className={styles.fakeTitle}>{t('demo.product')}</p>
+          <p className={styles.meta}>{t('demo.invoiceDue')}</p>
+          <Button>{t('demo.submit')}</Button>
+        </div>
       </FakeCard>
     </DemoStack>
   )
@@ -34,7 +34,9 @@ export function TokensBad() {
         }}
       >
         <p style={{ fontSize: 18, marginBottom: 8 }}>{t('demo.product')}</p>
-        <p style={{ color: '#9a917c', marginBottom: 12, fontSize: 13 }}>{t('demo.invoiceDue')}</p>
+        <p style={{ color: '#9a917c', marginBottom: 12, fontSize: 13 }}>
+          {t('demo.invoiceDue')}
+        </p>
         <button
           type="button"
           style={{

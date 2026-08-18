@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { messagesEn, messagesRu } from '@/shared/config'
 import { RULES, SECTIONS, TOPICS } from './catalog'
 
 describe('guideline catalog', () => {
@@ -25,5 +26,14 @@ describe('guideline catalog', () => {
 
   it('ships sixty-four interactive rules', () => {
     expect(RULES).toHaveLength(64)
+  })
+
+  it('gives every topic a name and a lead sentence in both locales', () => {
+    for (const topic of TOPICS) {
+      expect(messagesEn.topics[topic.id], topic.id).toBeTruthy()
+      expect(messagesRu.topics[topic.id], topic.id).toBeTruthy()
+      expect(messagesEn.topicLead[topic.id], `${topic.id} lead`).toBeTruthy()
+      expect(messagesRu.topicLead[topic.id], `${topic.id} ru lead`).toBeTruthy()
+    }
   })
 })

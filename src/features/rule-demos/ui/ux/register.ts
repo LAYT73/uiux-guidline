@@ -1,9 +1,31 @@
 import { registerDemos } from '../../model/registry'
 import { CursorBad, CursorGood, LooksLikeBad, LooksLikeGood } from './AffordanceDemo'
-import { FocusBad, FocusGood, IconNameBad, IconNameGood, SkipLinkBad, SkipLinkGood } from './AccessibilityDemo'
-import { DeadEndBad, DeadEndGood, ExplainActionBad, ExplainActionGood } from './EmptyStatesDemo'
-import { ConfirmBad, ConfirmGood, ConstraintsBad, ConstraintsGood } from './ErrorPreventionDemo'
-import { ImmediateBad, ImmediateGood, SilentFailBad, SilentFailGood } from './FeedbackDemo'
+import {
+  FocusBad,
+  FocusGood,
+  IconNameBad,
+  IconNameGood,
+  SkipLinkBad,
+  SkipLinkGood,
+} from './AccessibilityDemo'
+import {
+  DeadEndBad,
+  DeadEndGood,
+  ExplainActionBad,
+  ExplainActionGood,
+} from './EmptyStatesDemo'
+import {
+  ConfirmBad,
+  ConfirmGood,
+  ConstraintsBad,
+  ConstraintsGood,
+} from './ErrorPreventionDemo'
+import {
+  ImmediateBad,
+  ImmediateGood,
+  SilentFailBad,
+  SilentFailGood,
+} from './FeedbackDemo'
 import { LayoutShiftBad, LayoutShiftGood, SkeletonBad, SkeletonGood } from './LoadingDemo'
 
 registerDemos({

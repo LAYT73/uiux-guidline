@@ -11,7 +11,7 @@ export function GroupProximityGood() {
         <Button variant="secondary">{t('demo.cancel')}</Button>
         <Button>{t('demo.save')}</Button>
       </DemoRow>
-      <div style={{ height: 24 }} />
+      <div className={styles.spacer} />
       <Button variant="danger">{t('demo.deleteProject')}</Button>
     </DemoStack>
   )
@@ -35,8 +35,18 @@ export function GroupCardsGood() {
   const { t } = useTranslation()
   return (
     <DemoStack>
-      <FakeCard>{t('demo.profileCard')}</FakeCard>
-      <FakeCard>{t('demo.billingCard')}</FakeCard>
+      <FakeCard>
+        <div className={styles.mini}>
+          <p className={styles.demoH2}>{t('demo.profile')}</p>
+          <p className={styles.meta}>{t('demo.profileCard')}</p>
+        </div>
+      </FakeCard>
+      <FakeCard>
+        <div className={styles.mini}>
+          <p className={styles.demoH2}>{t('demo.billing')}</p>
+          <p className={styles.meta}>{t('demo.billingCard')}</p>
+        </div>
+      </FakeCard>
     </DemoStack>
   )
 }
@@ -46,8 +56,15 @@ export function GroupCardsBad() {
   return (
     <DemoStack>
       <FakeCard>
-        <p>{t('demo.profile')}</p>
-        <p className={styles.meta}>{t('demo.mixedCard')}</p>
+        <div className={styles.mini}>
+          <p className={styles.demoH2}>{t('demo.profile')}</p>
+          <p className={styles.meta}>{t('demo.mixedCard')}</p>
+          <DemoRow>
+            <Button variant="danger" size="sm">
+              {t('demo.deleteProject')}
+            </Button>
+          </DemoRow>
+        </div>
       </FakeCard>
     </DemoStack>
   )

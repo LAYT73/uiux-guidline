@@ -18,7 +18,9 @@ export function MeasureGood() {
         valueLabel={`${ch}ch`}
         onChange={(event) => setCh(Number(event.target.value))}
       />
-      <p style={{ maxWidth: `${ch}ch`, fontSize: 14, lineHeight: 1.55 }}>{t('demo.measureSample')}</p>
+      <p className={styles.copy} style={{ maxWidth: `${ch}ch` }}>
+        {t('demo.measureSample')}
+      </p>
     </DemoStack>
   )
 }
@@ -38,7 +40,7 @@ export function MeasureBad() {
         valueLabel={`${ch}ch`}
         onChange={(event) => setCh(Number(event.target.value))}
       />
-      <p className={styles.meta} style={{ maxWidth: `${ch}ch`, fontSize: 14, lineHeight: 1.55 }}>
+      <p className={styles.copy} style={{ width: '100%', maxWidth: `${ch}ch` }}>
         {t('demo.measureSample')}
       </p>
     </DemoStack>

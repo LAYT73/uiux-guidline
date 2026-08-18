@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Star } from 'lucide-react'
 import { DemoStack, FakeCard } from '@/shared/ui/demo-kit'
+import { Button } from '@/shared/ui/button'
 import styles from '../../playground.module.css'
 
 export function OneJobGood() {
@@ -11,12 +12,16 @@ export function OneJobGood() {
   return (
     <DemoStack>
       <FakeCard>
-        <button type="button" className={styles.chip} onClick={() => setOpen(true)} style={{ width: '100%' }}>
-          {t('demo.northwind')}
-        </button>
-        <p className={styles.meta} style={{ marginTop: 8 }}>
-          {t('demo.cardOpens')}
-        </p>
+        <div className={styles.mini}>
+          <Button
+            variant="secondary"
+            className={styles.fullWidth}
+            onClick={() => setOpen(true)}
+          >
+            {t('demo.northwind')}
+          </Button>
+          <p className={styles.meta}>{t('demo.cardOpens')}</p>
+        </div>
       </FakeCard>
       {open ? <p className={styles.ok}>{t('demo.openedProject')}</p> : null}
     </DemoStack>
@@ -30,23 +35,31 @@ export function OneJobBad() {
   return (
     <DemoStack>
       <div onClick={() => setLog('bodyPreview')} style={{ cursor: 'pointer' }}>
-      <FakeCard>
-        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
-          <button type="button" className={styles.chip} onClick={(e) => { e.stopPropagation(); setLog('titleRename') }}>
-            {t('demo.northwind')}
-          </button>
-          <button
-            type="button"
-            className={styles.chip}
-            onClick={(e) => {
-              e.stopPropagation()
-              setLog('starFavorite')
-            }}
-          >
-            <Star size={14} />
-          </button>
-        </div>
-      </FakeCard>
+        <FakeCard>
+          <div className={styles.navRow} style={{ justifyContent: 'space-between' }}>
+            <button
+              type="button"
+              className={styles.chip}
+              onClick={(event) => {
+                event.stopPropagation()
+                setLog('titleRename')
+              }}
+            >
+              {t('demo.northwind')}
+            </button>
+            <button
+              type="button"
+              className={styles.chip}
+              aria-label={t('demo.starred')}
+              onClick={(event) => {
+                event.stopPropagation()
+                setLog('starFavorite')
+              }}
+            >
+              <Star size={14} aria-hidden />
+            </button>
+          </div>
+        </FakeCard>
       </div>
       <p className={styles.meta}>{t(`demo.${log}`)}</p>
     </DemoStack>
