@@ -1,0 +1,58 @@
+import { useState } from 'react'
+import { DemoRange, DemoStack } from '@/shared/ui/demo-kit'
+import styles from '../../playground.module.css'
+
+const SCALE = [4, 8, 12, 16, 24, 32]
+
+function snap(value: number) {
+  return SCALE.reduce((best, step) =>
+    Math.abs(step - value) < Math.abs(best - value) ? step : best,
+  )
+}
+
+export function ScaleGood() {
+  const [raw, setRaw] = useState(16)
+  const gap = snap(raw)
+
+  return (
+    <DemoStack>
+      <DemoRange
+        label="Gap"
+        name="spacing-scale-good"
+        min={4}
+        max={32}
+        value={raw}
+        valueLabel={`${gap}px`}
+        onChange={(event) => setRaw(Number(event.target.value))}
+      />
+      <div className={styles.tiles} style={{ gap }}>
+        <span className={styles.tile} />
+        <span className={styles.tile} />
+        <span className={styles.tile} />
+      </div>
+    </DemoStack>
+  )
+}
+
+export function ScaleBad() {
+  const [gap, setGap] = useState(11)
+
+  return (
+    <DemoStack>
+      <DemoRange
+        label="Gap"
+        name="spacing-scale-bad"
+        min={5}
+        max={19}
+        value={gap}
+        valueLabel={`${gap}px`}
+        onChange={(event) => setGap(Number(event.target.value))}
+      />
+      <div className={styles.tiles} style={{ gap }}>
+        <span className={styles.tile} />
+        <span className={styles.tile} style={{ marginLeft: 3 }} />
+        <span className={styles.tile} style={{ marginLeft: 7 }} />
+      </div>
+    </DemoStack>
+  )
+}

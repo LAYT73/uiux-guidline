@@ -83,5 +83,140 @@
     "empty-states": "Empty states",
     "accessibility": "Accessibility"
   },
-  "rules": {}
+  "rules": {
+    "spacing": {
+      "scale": {
+        "title": "Space on a 4/8 scale",
+        "description": "A shared scale (4, 8, 12, 16, 24…) is a rhythm, not decoration. Random gaps force the eye to re-measure every block. Pick a step, then only use those numbers — even when a slider tempts you off-grid.",
+        "goodHint": "The gap snaps to the scale. Related tiles stay in one beat.",
+        "badHint": "7px, 11px, 13px look 'fine' until you put them next to each other."
+      },
+      "proximity": {
+        "title": "Related things sit closer",
+        "description": "Proximity is meaning. A label belongs to its field because of the small gap between them — not because of a box. Equal spacing everywhere flattens the relationship and makes the form slower to parse.",
+        "goodHint": "Tight inside a group, looser between groups. Drag to feel the grouping.",
+        "badHint": "The same gap between label, field, and the next section. Nothing belongs together."
+      },
+      "padding-vs-gap": {
+        "title": "Padding holds, gap separates",
+        "description": "Padding is the breath inside a surface. Gap is the distance between siblings. Using margin as a dump for both creates collapse bugs and uneven edges. Keep inner space on the container, sibling space on the stack.",
+        "goodHint": "One padding on the card, one gap between rows. The edge stays even.",
+        "badHint": "Each row brings its own margin. The last item and the border never agree."
+      }
+    },
+    "border-radius": {
+      "scale": {
+        "title": "Radius is a scale too",
+        "description": "6, 10, 16, 24, pill. Mixing a 3px chip with a 28px input on the same row reads as two products glued together. Radius tokens keep the family resemblance when sizes change.",
+        "goodHint": "Every corner comes from the same ladder. Tune the step, not a one-off.",
+        "badHint": "Each control invents a radius. The row feels like a collage."
+      },
+      "proportional": {
+        "title": "Bigger surfaces, rounder corners",
+        "description": "A 40px button with a 24px radius looks swollen. A large card with 4px corners looks clipped. Radius should grow with the element so curvature stays optically similar.",
+        "goodHint": "Small control, small radius. Large card, larger radius. Scale the box and watch it hold.",
+        "badHint": "A pill radius on a tiny chip and a sharp corner on a huge card — both look wrong."
+      },
+      "pill-vs-form": {
+        "title": "Pills for tags, not for typing",
+        "description": "A stadium shape says 'chip / filter / status'. A text field is a box you enter. Pill-shaped inputs hide caret position and feel like buttons. Keep forms quietly rounded; save the pill for things you tap, not things you type.",
+        "goodHint": "The field is a rectangle. The tag next to it can be a pill.",
+        "badHint": "Type into a stadium. The shape argues with the task."
+      }
+    },
+    "typography": {
+      "hierarchy": {
+        "title": "One voice, several sizes",
+        "description": "Hierarchy is a staircase: display, title, body, caption. If everything is 16px medium, the page has no entry point. Size, weight, and space do the work that color shouting cannot.",
+        "goodHint": "Change the display size. Body stays readable; the title still leads.",
+        "badHint": "Title, meta, and body share a size. You have to read to know what matters."
+      },
+      "measure": {
+        "title": "Keep the line 45–75 characters",
+        "description": "The eye returns to the next line. Too wide and it loses the start; too narrow and it chops phrases. Measure is a reading tool, not a layout leftover.",
+        "goodHint": "Stay near 65ch. The paragraph is easy to scan.",
+        "badHint": "A full-bleed paragraph. Your eye swims to find the next line."
+      },
+      "line-height": {
+        "title": "Leading is part of the typeface",
+        "description": "Body copy wants ~1.5; display wants tighter. Cramped leading is not 'more content' — it is friction. Pair line-height with size, then stop tweaking per paragraph.",
+        "goodHint": "Comfortable leading at body size. You can read a block without squinting.",
+        "badHint": "Line-height 1.05 on body text. It looks like a screenshot of a bug."
+      }
+    },
+    "colors": {
+      "tokens": {
+        "title": "Name the role, not the hex",
+        "description": "Accent, surface, danger are roles. Hard-coded #E8A54B in twelve files cannot survive a theme switch. Tokens let dark and light share meaning while the paint changes.",
+        "goodHint": "The same card in both themes. The accent is a token, so contrast holds.",
+        "badHint": "A hex that looked fine on dark, now vanishes on light."
+      },
+      "contrast": {
+        "title": "Contrast is a requirement, not a vibe",
+        "description": "WCAG AA is 4.5:1 for body text. Pretty grey on pretty grey is still unreadable. Check contrast where people actually read — not on the Figma artboard at 200%.",
+        "goodHint": "Move the sliders. The ratio updates; the text stays legal.",
+        "badHint": "Muted on muted. Stylish, and unusable in sunlight."
+      },
+      "not-only-color": {
+        "title": "Never encode meaning in color alone",
+        "description": "Red error text disappears for a large part of color-blind users and for anyone on a greyscale Kindle. Pair color with an icon, a word, or a pattern. Color is a highlighter, not the message.",
+        "goodHint": "Error has an icon and the word Error. Color is extra.",
+        "badHint": "Only the border turns red. If you cannot see red, nothing happened."
+      }
+    },
+    "shadows": {
+      "elevation": {
+        "title": "Elevation is a short ladder",
+        "description": "Rest, hover, overlay. Three steps are enough. If every card looks like a modal, nothing is lifted. Shadows should answer 'how close is this to me?', not decorate the default state.",
+        "goodHint": "Hover the card. It steps up one rung, not ten.",
+        "badHint": "A 40px blur on a list row. Everything claims to be a dialog."
+      },
+      "vs-border": {
+        "title": "Borders for rest, shadows for lift",
+        "description": "A 1px border is cheaper and cleaner for resting surfaces. Shadows belong to things that float (menus, modals, dragged cards). Stacking both at rest makes a muddy edge.",
+        "goodHint": "Resting card: border. Lifted card: shadow. Try both states.",
+        "badHint": "Border plus heavy shadow plus inner glow. The edge is a noise floor."
+      }
+    },
+    "icons": {
+      "optical-size": {
+        "title": "Icons share the optical size of the text",
+        "description": "A 12px icon next to 16px labels looks like a footnote. A 28px icon next to the same label looks like a different control. Match stroke and box to the type size they sit with.",
+        "goodHint": "Icon and label share a size. Change type size; the icon follows.",
+        "badHint": "The icon is a different scale. It reads as a separate object."
+      },
+      "align": {
+        "title": "Align to the cap-height, not the SVG viewBox",
+        "description": "Icons have optical padding in the file. Naive `align-items: center` can still look low. Nudge until the glyph and the word share a midline — especially in buttons and nav.",
+        "goodHint": "Icon and word sit on one line. Nothing feels dropped.",
+        "badHint": "The icon hangs below the label. You can feel the misalignment."
+      },
+      "consistency": {
+        "title": "One family: stroke or fill, not both",
+        "description": "Outline icons are one language; filled icons are another. Mixing them in a toolbar says 'we grabbed whatever was in the set'. Pick a style, a stroke width, and stay there unless the fill means selected.",
+        "goodHint": "All outline, same stroke. Selected can fill — that is a state, not a mix-up.",
+        "badHint": "Outline, filled, two-tone. A toolbar of coincidences."
+      }
+    },
+    "motion": {
+      "duration": {
+        "title": "Short, honest durations",
+        "description": "150ms for color, ~240ms for small movement, ~400ms for large panels. Longer than that is a performance. Users should feel response, not wait for choreography.",
+        "goodHint": "Click. The chip settles in a fraction of a second.",
+        "badHint": "A two-second bounce on a toggle. You start to doubt the click registered."
+      },
+      "purpose": {
+        "title": "Motion has to mean something",
+        "description": "Enter, exit, spatial change. If a button spins 360° on click, the motion is a joke sitting on the task. Animate the thing that changed, in the direction the user is going.",
+        "goodHint": "The panel slides from the control that opened it.",
+        "badHint": "Everything wiggles. Motion is noise, so real change is harder to see."
+      },
+      "reduced": {
+        "title": "Honor reduced motion",
+        "description": "Vestibular disorders, batteries, preference. `prefers-reduced-motion` is not a nice-to-have — it is a contract. Instant states, no parallax, no large travel. The UI still works; it just stops swimming.",
+        "goodHint": "Toggle reduced motion. The state still changes; the travel disappears.",
+        "badHint": "The animation always runs. The setting is theater."
+      }
+    }
+  }
 }
