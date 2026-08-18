@@ -1,13 +1,29 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>uiux-guidline</title>
+    <meta
+      name="description"
+      content="Interactive UI/UX guidelines: not just how good interfaces look, but why they work."
+    />
+    <title>UI/UX Guideline</title>
+    <script>
+      (function () {
+        try {
+          var themeRaw = localStorage.getItem('uiux-theme')
+          var localeRaw = localStorage.getItem('uiux-locale')
+          var theme = themeRaw ? JSON.parse(themeRaw).state.theme : 'dark'
+          var locale = localeRaw ? JSON.parse(localeRaw).state.locale : 'en'
+          document.documentElement.dataset.theme = theme || 'dark'
+          document.documentElement.lang = locale || 'en'
+        } catch (e) {}
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/app/index.tsx"></script>
   </body>
 </html>
