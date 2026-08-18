@@ -3,6 +3,7 @@ import { RULES } from '@/entities/guideline'
 import { messagesEn, messagesRu } from '@/shared/config'
 import { getDemos } from './registry'
 import '../ui/foundations/register'
+import '../ui/components/register'
 
 function pick(root: unknown, id: string) {
   return id.split('.').reduce<unknown>((node, part) => {

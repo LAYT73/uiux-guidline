@@ -217,6 +217,122 @@
         "goodHint": "Toggle reduced motion. The state still changes; the travel disappears.",
         "badHint": "The animation always runs. The setting is theater."
       }
+    },
+    "buttons": {
+      "hierarchy": {
+        "title": "One primary action per view",
+        "description": "Primary, secondary, ghost. If three buttons shout at the same volume, none of them is a decision. Hierarchy tells the eye where the next step is — especially in a toolbar or a dialog footer.",
+        "goodHint": "One filled button. The rest recede. Click around: the path is obvious.",
+        "badHint": "Three primaries. Every action is 'the' action, so none is."
+      },
+      "states": {
+        "title": "Buttons have states, not just a default",
+        "description": "Hover, focus, active, disabled, loading. A control that only looks good at rest will feel broken the moment someone touches it. Disabled must not steal focus; loading must not look dead.",
+        "goodHint": "Hover, focus, then trigger loading. The button stays the same object.",
+        "badHint": "No focus ring, a grey that looks like a label, loading with no spinner."
+      },
+      "vs-link": {
+        "title": "Buttons do things, links go places",
+        "description": "A button submits, opens, deletes. A link changes location. Using a button for navigation breaks open-in-new-tab. Using an anchor for actions breaks keyboard and crawlers. The element is the API.",
+        "goodHint": "Save is a button. Docs is a link — Cmd/Ctrl-click works.",
+        "badHint": "A span that looks like a button. You cannot tab to it, and it does not go anywhere."
+      }
+    },
+    "inputs": {
+      "labels": {
+        "title": "A label is not a placeholder",
+        "description": "Placeholders vanish on type, so the field loses its name. Labels stay. Hint text can live below. If the only name is inside the box, a filled field is anonymous.",
+        "goodHint": "The word Email stays while you type.",
+        "badHint": "Type once — the name is gone. Was this email or username?"
+      },
+      "errors": {
+        "title": "Errors sit next to the field that failed",
+        "description": "A toast at the top of a long form is a scavenger hunt. Put the message under the input, set aria-invalid, and move focus. Timing: after submit or on blur — not on every keystroke for format.",
+        "goodHint": "Submit. The field explains itself and keeps focus nearby.",
+        "badHint": "A generic alert far away. The inputs look fine. Good luck."
+      },
+      "required": {
+        "title": "Mark required before the user fails",
+        "description": "Surprise required fields are a trap. Mark them in the label, or mark optional if most are required. Do not wait for submit to reveal the contract.",
+        "goodHint": "Required is in the label. You know before you try.",
+        "badHint": "Empty submit. Suddenly five fields were mandatory."
+      }
+    },
+    "cards": {
+      "one-job": {
+        "title": "A card has one job",
+        "description": "Preview, choose, or contain a small form — pick one. A card that is a link, a menu, and a settings panel at once creates nested click wars and muddy scanning.",
+        "goodHint": "The card opens the project. Actions live inside, after the choice.",
+        "badHint": "Clicking the title, the star, or the card body all mean different things — accidentally."
+      },
+      "nested-click": {
+        "title": "Do not nest interactive targets",
+        "description": "A link wrapping a button is invalid HTML and a keyboard maze. If the card is clickable, inner controls need their own hit area that stops propagation — or the card should not be a link.",
+        "goodHint": "Card click opens. The menu button is a separate target.",
+        "badHint": "A link around a button. Click, tab, and screen readers disagree."
+      }
+    },
+    "modals": {
+      "focus-trap": {
+        "title": "Trap focus, dismiss with Escape",
+        "description": "A modal is a short conversation. Focus enters, Tab cycles, Escape and the overlay close, focus returns. Without that, keyboard users fall into the page behind the dimmer.",
+        "goodHint": "Open, Tab, Escape. You never lose where you were.",
+        "badHint": "Focus sits on the page behind. The dimmer is decoration."
+      },
+      "one-primary": {
+        "title": "One primary action in a dialog",
+        "description": "Confirm vs cancel. If both are primary, the destructive path is as loud as the safe one. Place the primary in a predictable spot; make destroy secondary or danger, never both at once as 'the' button.",
+        "goodHint": "Delete is danger. Cancel is quiet. Easy to back out.",
+        "badHint": "Two filled buttons. Fifty-fifty chance you pick the ruinous one."
+      }
+    },
+    "dropdowns": {
+      "keyboard": {
+        "title": "A menu is a keyboard surface",
+        "description": "Enter/Space opens, arrows move, Enter selects, Escape closes. If it only works with a mouse, it is a decoration. Typeahead helps when the list is long.",
+        "goodHint": "Open with the button, move with arrows, select with Enter.",
+        "badHint": "Hover-only. Keyboard and touch get nothing reliable."
+      },
+      "right-control": {
+        "title": "Two options are not a dropdown",
+        "description": "A select with Yes/No is a tax. Use a switch or segmented control. Dropdowns earn their keep at ~5+ options, or when the current value must stay compact.",
+        "goodHint": "On/Off is a switch. You see the state without opening anything.",
+        "badHint": "A select for two values. An extra click for no extra meaning."
+      }
+    },
+    "tables": {
+      "numeric": {
+        "title": "Numbers align on the right",
+        "description": "Magnitudes compare by the left of the digit column — which is the right edge of the cell. Left-aligned money is a word, not a quantity. Keep units in the header, not in every cell.",
+        "goodHint": "Scan the column. 9 and 900 line up.",
+        "badHint": "Left-aligned amounts. You have to read each one to compare."
+      },
+      "sticky": {
+        "title": "Keep the header when the body scrolls",
+        "description": "A table without a sticky header becomes a riddle after two screens. Pin the header (and the first column if rows are identity). The data can move; the legend cannot.",
+        "goodHint": "Scroll the body. You still know which column is which.",
+        "badHint": "The header leaves. Every row is unnamed numbers."
+      },
+      "density": {
+        "title": "Pick a density and stay there",
+        "description": "Comfortable for browsing, compact for finance. Mixing an airy header with cramped rows looks unfinished and wrecks scan lines. Density is a property of the table, not of each row.",
+        "goodHint": "Toggle density. The whole grid breathes the same.",
+        "badHint": "A padded header, tight rows, a wrapped cell. No scan line."
+      }
+    },
+    "navigation": {
+      "current": {
+        "title": "Show where I am",
+        "description": "aria-current, a strong weight, a persistent mark. If every item looks equal, wayfinding is guesswork. The current item is not a hover state — it is location.",
+        "goodHint": "The active item stays marked after you click.",
+        "badHint": "Nothing is current. You infer location from the page title alone."
+      },
+      "landmarks": {
+        "title": "Nav is a landmark, not a pile of links",
+        "description": "A nav with a name, a list, skip links. Landmark navigation is how assistive tech jumps. A header full of unlabelled divs is a maze with no doors.",
+        "goodHint": "This demo exposes a named nav. Jump tools can find it.",
+        "badHint": "Links in a div soup. No list, no name, no current."
+      }
     }
   }
 }
